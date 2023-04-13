@@ -1,100 +1,171 @@
-*, a, h1, h2 {
-    color: #fff;
-    font-family: Inter;
-}
+*,
+a,
+h1,
+h2 {
+  color: #fff;
 
-h1 {
-    font-size: calc(var(--typical-fsize) * 2.5);
+  margin: 0;
+  border: 0;
+  padding: 0;
+
+  font-family: 'Inter';
 }
 
 html {
-    width: 100%;
-    height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #2a1940 10%,
+    #401b6f 45%,
+    #c7542f 75%,
+    #ffa24d 100%
+  );
 
-    background: linear-gradient(180deg,
-            #2A1940 10vh,
-            #401B6F 45vh,
-            #C7542F 75vh,
-            #FFA24D 100vh);
-
-    font-size: 12px;
-
-
-    --five: 5px;
-    --typical-height: 25px;
-    --typical-fsize: 1rem;
+  font-size: 12px;
+  --five: 5px;
+  --typical-height: 25px;
+  --typical-fsize: 1rem;
 }
-
+a,
+button {
+  outline: none;
+}
 body {
-    margin: 0;
-}
+  height: 100vh;
+  min-height: 500px;
+  width: 100%;
+  margin: 0;
 
+  overflow-y: hidden;
+}
+/* Контентная область и содержимое */
+content {
+  width: 80%;
+  height: 90%;
+  max-height: 90%;
+
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  display: block;
+}
+/* Хэдер */
 header {
-    width: 100%;
-    font-size: 0.8rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-
+.inner-header {
+  margin: 0px auto;
+}
 /* Название */
-
 .title {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
-
+h1 {
+  margin: calc(var(--five) * 2);
+  font-family: 'Fifaks 1.0 dev1';
+  font-size: calc(var(--typical-fsize) * 2);
+}
 .LOGO {
-    height: calc(var(--typical-height) * 3);
+  height: calc(var(--typical-height) * 2);
 }
-
 /* Поиск */
-
 .search {
-    border: 1px solid #fff;
-    border-radius: var(--typical-height);
-    padding: var(--five);
+  --witdh-search: 70%;
 
-    display: flex;
-    justify-content: center;
+  border: 1px solid #fff;
+  max-width: var(--witdh-search);
+  border-radius: calc(var(--typical-height)/1.5);
+  padding: var(--five);
+
+  display: flex;
+
+  justify-content: space-between;
 }
-
 .search * {
-    width: var(--typical-height);
-    height: var(--typical-height);
-
-    border: none;
-    outline: none;
-    padding: 0;
-
-    background-color: #00000000;
+  border: none;
+  padding: 0;
+  background-color: #00000000;
 }
-
 .search input {
-    width:calc( var(--typical-height) * 15);
-    padding: 0 10px;
+  --input-width: 90%;
+  
+  width: calc(var(--typical-height) * 10);
+  width: 80%;
+  outline: 0;
+  padding: 0 5%;
+
+  font-family: 'Fifaks 1.0 dev1';
+  font-size: calc(var(--typical-fsize) * 1.65);
+}
+.search input::placeholder {
+  color: #ffffff66;
+}
+.search button{
+  width: 30%;
+
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.search button img{
+  width: 30%;
 }
 
 /* Балик и навигация */
-
 nav {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-
 nav h2 {
-    font-size: calc(var(--typical-fsize) * 1.5);
+  font-size: calc(var(--typical-fsize) * 1.5);
+  font-family: 'Fifaks 1.0 dev1';
 }
-
 nav div {
-    width: calc(var(--typical-height)*3 + var(--five) * 2);
-    margin-left: calc(var(--five)*3);
-    
-    display: flex;
-    
+  width: calc(var(--typical-height) * 1.5 * 3 + var(--five) * 2);
+  margin-left: calc(var(--five)*3);
+  display: flex;
+  justify-content: space-between;
+}
+nav div a img {
+  height: calc(var(--typical-height)*1.5);
+}
+/* Футер */
+footer {
+  width: 100%;
+  height: 10%;
+  position: relative;
+}
+footer img {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+}
+footer .info {
+  width: 100%;
+  height: 90%;
+
+  background: #271043;
+}
+.zero {
+  width: 100%;
+  position: relative;
 }
 
-nav div a img{
-    height: calc(var(--typical-height)*2);
+/* Блоки */
+.inter {
+  font-family: 'Inter';
+}
+.radius {
+  border-radius: 20px;
+}
+.inner-shadow {
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
+}
+.content {
+  padding: 20px;
 }
