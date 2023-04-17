@@ -1,7 +1,7 @@
 <?php
 // $con = mysqli_connect('localhost', 'root', '', 'mein_spiel');
 session_start();
-$return = $_SESSION['return'];
+$return = $_SESSION['return'] ?? null;
 
 $nav = [
   'catalogue' => 'Каталог',
@@ -25,6 +25,26 @@ $nav = [
 
 <body>
   <content>
+
+    <div id="account" class="radius hide">
+      <img src="./img/logo.svg" alt="">
+      
+      <form action="" method="get" id="signIn">
+        <div><input type="text" name="login" placeholder="Логин"></div>
+        <div><input type="password" name="pass" placeholder="Пароль"></div>
+        <button type="submit">Войти</button>
+        <div><a href="">Регистрация</a></div>
+      </form>
+
+      <form action="" method="get" id="signUp" class="hide">
+        <div><input type="text" name="login" placeholder="Логин"></div>
+        <div><input type="password" name="pass" placeholder="Пароль"></div>
+        <div><input type="password" name="pass" placeholder="Повтор пароля"></div>
+        <button type="submit">Регистрация</button>
+        <div><a href="">Взод</a></div>
+      </form>
+    </div>
+
     <header>
       <a class="title inner-header" href="/" title="На главную">
         <img src="./img/logo.svg" class="LOGO">
@@ -36,7 +56,7 @@ $nav = [
       </form>
       <nav class="inner-header">
         <?php
-        if ($user) {
+        if (isset($user)) {
         ?>
           <h2>
             <?= $user['balance'] ?> ₽
@@ -47,7 +67,7 @@ $nav = [
         <div>
           <?php
           foreach ($nav as $item => $title) {
-            if ($user) {
+            if (isset($user)) {
           ?>
               <a href="<?= $item ?>.php" class="logoLink"><img src="./img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
@@ -56,7 +76,7 @@ $nav = [
             <?php
             } else {
             ?>
-              <a href="#<?= $item ?>" id="loginBtn" class="logoLink"><img src="./img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+              <a onclick="hideSwitcher(<?= $item ?>)" id="loginBtn" class="logoLink"><img src="./img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
           <?php
             }
           }
@@ -73,11 +93,13 @@ $nav = [
 
     </section>
   </content>
+
   <footer class="wrapper">
     <img src="./img/mountains.svg">
     <div class="info"></div>
     <div class="spacer"></div>
   </footer>
+
 </body>
 
 </html>
