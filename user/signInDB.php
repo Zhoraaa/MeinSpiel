@@ -1,18 +1,18 @@
 <?php
-include("../pageBase.php");
-
+// Подключение БД и сессии
+require_once("../pageBase.php");
 $_SESSION['result'] = "Не авторизован";
 
 // перезаписываем данные с формы в таблицу для SQL запросов и сверки
-$login = $_POST['login'];
-$pass = $_POST['pass'];
+$login = $_GET['login'];
+$pass = $_GET['pass'];
 
 if (!$login) :
     $_SESSION['result'] = "Ошибка, введите логин";
-    header("location: signIn.php");
+    // header("location: /");
 else :
     // Подключаем таблицу для сверки данных
-    echo $query = "SELECT * FROM users WHERE login='$login' OR email='$login' OR phone='$login'";
+    echo $query = "SELECT * FROM users WHERE login='$login' OR email='$login'";
     $res = $con->query($query);
     $check = mysqli_fetch_assoc($res);
 
@@ -24,17 +24,17 @@ else :
         // Определяем, введён ли пароль и введён ли он верно
         if (!$pass) {
             $_SESSION['result'] = "Ошибка, введите пароль.";
-            header("location: signIn.php");
+            // header("location: /");
         } elseif ($pass != $check['password']) {
             $_SESSION['result'] = "Ошибка, неверный пароль.";
         } elseif ($pass == $check['password']) {
             setcookie("user", $check['id'], time() + 3600 * 24, "/");
             $_SESSION['result'] = "Авторизация завершена. Добро пожаловать, " . $check['name'] . "!";
-            header("Location: /");
+            // header("Location: /");
         }
     }
 endif;
-header("location: signIn.php")
+// header("location: /")
 ?>
 
 <div class="content">

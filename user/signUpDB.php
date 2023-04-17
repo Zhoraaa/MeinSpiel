@@ -1,13 +1,12 @@
 <?php
-
 // Подключение БД и сессии
-include('../pageBase.php');
-$_SESSION['result'] = "Регистрация прошла успешно";
+require_once('../pageBase.php');
+$_SESSION['result'] = "Регистрация не была завершена по неизвестной ошибке";
 
 // Запись в переменные для последующего SQL-запроса
-$login = $_POST['login'];
-$email = $_POST['email'];
-$pass = ($_POST['pass'] == $_POST['passRep']) ? $_POST['pass'] : false;
+$login = $_GET['login'];
+$email = $_GET['email'];
+$pass = ($_GET['pass'] == $_GET['passRep']) ? $_GET['pass'] : false;
 
 // Защита от дурака, отключившего JS
 if (!$login) {
@@ -26,46 +25,45 @@ if (!$login) {
     } else {
 
         // Проверка логина, почты и телефона на уникальность
-        $res = $con->query("SELECT * FROM users");
-        $check = mysqli_fetch_assoc($res);
+        $res = $con->query("SELECT * FROM users WHERE `name_user`='$login'");
+        $checkLogin = mysqli_fetch_assoc($res);
+        $res = $con->query("SELECT * FROM users WHERE `email`='$email'");
+        $checkEmail = mysqli_fetch_assoc($res);
 
-        if ($check['login'] == $login) {
+        if ($checkLogin) {
             $_SESSION['result'] = "Логин уже используется";
-        } elseif ($check['email'] == $email) {
+        } elseif ($checkEmail) {
             $_SESSION['result'] = "Почта уже используется";
         } else {
             // Добавление пользователя. Всегда есть хотябы один админ.
             $query = "SELECT * FROM `users` WHERE role = 1";
             $res = $con->query($query);
 
-            $role = (!empty($check == mysqli_fetch_all($res))) ? 2 : 1;
+            $role = (!empty($check == mysqli_fetch_all($res))) ? 1 : 2;
 
             $query = "INSERT INTO `users`
             (`id_user`, `name_user`, `password`, `balance`, `avatar`, `email`, `role`)
             VALUES
-            (NULL, '$login', '$pass', '', 'default.png', '', '')
-        (NULL, '', '$email', $phone, '$pass', NULL, '')";
-            echo $query."<br>";
+            (NULL, '$login', '$pass', '0', 'default.png', '$email', '$role')";
+            
             $res = $con->query(($query));
 
             // Автоматический вход в аккаунт после регистрации
-            $query = "SELECT * FROM `users` WHERE `login`='$login' AND `password`='$pass';";
-            echo $query;
+            $query = "SELECT * FROM `users` WHERE `name_user`='$login' AND `password`='$pass';";
+            
             $res = $con->query($query);
-            $user = mysqli_fetch_assoc($res);
+            $account = mysqli_fetch_assoc($res);
 
-            setcookie("user", $account['id'], time() + 3600 * 24, "/");
+            setcookie("user", $account['id_user'], time() + 3600 * 24, "/");
 
-            $_SESSION['result'] = "Регистрация завершена. Добро пожаловать, " . $user['name'] . "!";
-            header("Location: ../index.php");
+            $_SESSION['result'] = "Регистрация завершена. Добро пожаловать, " . $account['name_user'] . "!";
         }
     }
 }
-header("location: signUp.php");
+header("location: /");
 ?>
 
 <div class="content">
     <p><?= $_SESSION['result'] ?></p>
     <p><?= $query ?></p>
-    <p><?= strlen($phone) ?></p>
 </div>
