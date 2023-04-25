@@ -14,11 +14,14 @@ h2 {
 }
 
 html {
+  height: 100vw;
+  width: 100vw;
+
   background: linear-gradient(180deg,
-      #2a1940 10%,
-      #401b6f 45%,
-      #c7542f 75%,
-      #ffa24d 100%);
+      #2a1940 10vh,
+      #401b6f 45vh,
+      #c7542f 75vh,
+      #ffa24d 100vh);
 
   font-size: 12px;
   --five: 5px;
@@ -34,10 +37,7 @@ button,
 }
 
 body {
-  height: 100vh;
-  min-height: 500px;
-  width: 100%;
-  margin: 0;
+  margin: auto;
 }
 
 /* Контентная область и содержимое */
@@ -52,9 +52,6 @@ content {
   display: block;
 }
 
-input:focus {
-  outline: 1px #ffffff88 solid;
-}
 
 /* Хэдер */
 header {
@@ -164,7 +161,7 @@ footer {
 }
 
 footer img {
-  width: 80%;
+  width: 80vw;
   margin: 0 auto;
   display: block;
 }
@@ -181,24 +178,6 @@ footer .info {
   position: relative;
 }
 
-/* Блоки */
-.inter {
-  font-family: 'Inter';
-}
-
-.radius {
-  border-radius: 20px;
-}
-
-.inner-shadow {
-  background: rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
-}
-
-.content {
-  padding: 20px;
-}
-
 /* Авторизация и связанное */
 #account {
   height: auto;
@@ -210,9 +189,12 @@ footer .info {
   flex-direction: column;
   align-items: center;
 
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(30px);
+  
   position: fixed;
-  right: 10%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #account img {
@@ -244,4 +226,27 @@ footer .info {
 /* Форматирование текста */
 .ctrl-u {
   text-decoration: underline;
+}
+
+/* Частые стили */
+.inter {
+  font-family: 'Inter';
+}
+
+.radius {
+  border-radius: 20px;
+}
+
+.inner-shadow {
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
+}
+
+.content {
+  padding: 20px;
+}
+
+.white-border,
+input:focus {
+  outline: 1px #ffffff solid;
 }

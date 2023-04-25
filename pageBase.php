@@ -14,6 +14,7 @@ if ($user) {
 $query = "SELECT * FROM `users` WHERE `id_user`='$user'";
 $res = $con->query($query);
 $user = mysqli_fetch_assoc($res);
+
 }
 ?>
 <!DOCTYPE html>
@@ -64,7 +65,7 @@ $user = mysqli_fetch_assoc($res);
             <?php
             } else {
             ?>
-              <a onclick="addAuthBlock()" id="loginBtn" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+              <a onclick="authBlock()" id="loginBtn" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
           <?php
             }
           }
