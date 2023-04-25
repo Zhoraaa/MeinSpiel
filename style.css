@@ -14,7 +14,7 @@ h2 {
 }
 
 html {
-  height: 100vw;
+  height: 100vh;
   width: 100vw;
 
   background: linear-gradient(180deg,
@@ -38,11 +38,11 @@ button,
 
 body {
   margin: auto;
+  padding: 0 10%;
 }
 
 /* Контентная область и содержимое */
 content {
-  width: 80%;
   height: 90%;
   max-height: 90%;
 
