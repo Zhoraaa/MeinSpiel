@@ -31,27 +31,7 @@ $user = mysqli_fetch_assoc($res);
 </head>
 
 <body>
-  <content>
-
-    <div id="account" class="radius">
-      <img src="../img/logo.svg" alt="">
-
-      <form action="../user/signInDB.php" method="get" id="signIn">
-        <div><input type="text" name="login" placeholder="Логин" class="inner-shadow"></div>
-        <div><input type="password" name="pass" placeholder="Пароль" class="inner-shadow"></div>
-        <button type="submit">Войти</button>
-        <div><a href="">Регистрация</a></div>
-      </form>
-
-      <form action="../user/signUpDB.php" method="get" id="signUp">
-        <div><input type="text" name="login" placeholder="Логин" class="inner-shadow"></div>
-        <div><input type="email" name="email" placeholder="Эл. почта" class="inner-shadow"></div>
-        <div><input type="password" name="pass" placeholder="Пароль" class="inner-shadow"></div>
-        <div><input type="password" name="passRep" placeholder="Повтор пароля" class="inner-shadow"></div>
-        <button type="submit">Регистрация</button>
-        <div><a href="">Вход</a></div>
-      </form>
-    </div>
+  <content id="mainContent">
 
     <header>
       <a class="title inner-header" href="/" title="На главную">
@@ -84,7 +64,7 @@ $user = mysqli_fetch_assoc($res);
             <?php
             } else {
             ?>
-              <a onclick="hideSwitcher(<?= $item ?>)" id="loginBtn" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+              <a onclick="addAuthBlock()" id="loginBtn" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
           <?php
             }
           }
@@ -111,6 +91,7 @@ $user = mysqli_fetch_assoc($res);
 </body>
 
 </html>
+<script src="../script.js"></script>
 <?php
         unset($return);
       }

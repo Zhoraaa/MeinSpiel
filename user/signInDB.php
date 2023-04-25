@@ -9,7 +9,6 @@ $pass = $_GET['pass'];
 
 if (!$login) :
     $_SESSION['result'] = "Ошибка, введите логин";
-    // header("location: /");
 else :
     // Подключаем таблицу для сверки данных
     echo $query = "SELECT * FROM users WHERE login='$login' OR email='$login'";
@@ -24,17 +23,17 @@ else :
         // Определяем, введён ли пароль и введён ли он верно
         if (!$pass) {
             $_SESSION['result'] = "Ошибка, введите пароль.";
-            // header("location: /");
         } elseif ($pass != $check['password']) {
             $_SESSION['result'] = "Ошибка, неверный пароль.";
         } elseif ($pass == $check['password']) {
             setcookie("user", $check['id'], time() + 3600 * 24, "/");
+            
             $_SESSION['result'] = "Авторизация завершена. Добро пожаловать, " . $check['name'] . "!";
-            // header("Location: /");
         }
     }
 endif;
-// header("location: /")
+
+header("location: /")
 ?>
 
 <div class="content">

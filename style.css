@@ -2,6 +2,8 @@
 a,
 h1,
 h2 {
+  user-select: none;
+
   color: #fff;
 
   margin: 0;
@@ -25,7 +27,8 @@ html {
 }
 
 a,
-button {
+button,
+.pointer {
   outline: none;
   cursor: pointer;
 }
@@ -47,6 +50,10 @@ content {
   padding: 0 20px;
 
   display: block;
+}
+
+input:focus {
+  outline: 1px #ffffff88 solid;
 }
 
 /* Хэдер */
@@ -101,23 +108,22 @@ h1 {
 }
 
 .search input {
-  --input-width: 90%;
 
-  width: calc(var(--typical-height) * 12);
+  width: calc(var(--typical-height) * 10);
+  /* max-width: 40vw; */
   outline: 0;
   padding: 0 5%;
 
   font-family: 'Fifaks 1.0 dev1';
-  font-size: calc(var(--typical-fsize) * 2);
+  font-size: calc(var(--typical-fsize) * 1.6);
 }
 
 input::placeholder {
-  color: #ffffff66;
+  color: #ffffff88;
 }
 
 .search button {
-  width: 30%;
-
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: end;
@@ -125,6 +131,7 @@ input::placeholder {
 
 .search button img {
   width: 30%;
+  /* min-width: 5vw; */
 }
 
 /* Балик и навигация */
@@ -232,4 +239,9 @@ footer .info {
 /* Прятки */
 .hide {
   display:none;
+}
+
+/* Форматирование текста */
+.ctrl-u {
+  text-decoration: underline;
 }
