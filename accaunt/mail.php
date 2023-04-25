@@ -12,11 +12,10 @@ mail($to, $subject, $message);
 
 
 
-<form action="" method="post">
+<form action="" method="post" class="inner-shadow radius">
         
-<div class="inner-shadow radius">
-<input type="text" name="" placeholder="Тема"  class="inner-shadow"/>
-<input type="text" name="" placeholder="Сообщение"  class="inner-shadow"/>
+<input type="text" name="" placeholder="Тема"  class="inner-shadow radius "/>
+<input type="text" name="" placeholder="Сообщение"  class="inner-shadow radius"/>
 <button type="submit">Отправить письмо</button>
-</div>   
+ 
 </form>
