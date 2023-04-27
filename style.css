@@ -14,14 +14,6 @@ h2 {
 }
 
 html {
-  height: 100vh;
-  width: 100%;
-
-  background: linear-gradient(180deg,
-      #2a1940 10vh,
-      #401b6f 45vh,
-      #c7542f 75vh,
-      #ffa24d 100vh);
 
   font-size: 12px;
   --five: 5px;
@@ -37,17 +29,23 @@ button,
 }
 
 body {
+  min-height: 100vh;
   margin: auto;
+
+  background: linear-gradient(180deg,
+      #2a1940 10vh,
+      #401b6f 45vh,
+      #c7542f 75vh,
+      #ffa24d 100vh);
 }
 
 /* Контентная область и содержимое */
 content {
-  width: 80%;
-  height: 90%;
+  min-height: 85vh;
   max-height: 90%;
 
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10%;
 
   display: block;
 }
@@ -156,19 +154,26 @@ nav div a img {
 /* Футер */
 footer {
   width: 100%;
+
+  min-height: 15vh;
   height: 10%;
+
   position: relative;
+  bottom: 0px;
 }
 
 footer img {
-  width: 80vw;
+  height: 30%;
+  max-width: 80%;
   margin: 0 auto;
   display: block;
 }
 
 footer .info {
-  width: 100%;
-  height: 90%;
+  --pad-f-info: 15px;
+  max-width: 100%;
+  min-height: calc(10.4vh - var(--pad-f-info) * 2);
+  padding: var(--pad-f-info);
 
   background: #271043;
 }
@@ -189,12 +194,12 @@ footer .info {
   flex-direction: column;
   align-items: center;
 
-  backdrop-filter: blur(30px);
-  
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+
+  z-index: 1;
 }
 
 #account img {
@@ -260,4 +265,8 @@ input:focus {
 }
 .content-mail * {
   max-width: 300px;
+}
+
+.blur {
+  backdrop-filter: blur(30px);
 }

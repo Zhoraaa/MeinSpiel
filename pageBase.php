@@ -84,8 +84,8 @@ $user = mysqli_fetch_assoc($res);
   </content>
 
   <footer class="wrapper">
-    <img src="./img/mountains.svg">
-    <div class="info"></div>
+    <img src="../img/mountains.svg">
+    <div class="info">asdsa</div>
     <div class="spacer"></div>
   </footer>
 

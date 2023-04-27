@@ -31,7 +31,7 @@ function authBlock() {
 
     let auth = document.createElement("div");
     auth.id = "account";
-    auth.classList.add("radius");
+    auth.classList.add("radius", "blur");
     auth.innerHTML =
       '<a onclick="authBlock()" id="loginBtn" class="logoLink"><img src="../img/account.svg"></a>' +
 
