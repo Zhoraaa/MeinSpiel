@@ -19,3 +19,7 @@ mail($to, $subject, $message);
 <button type="submit">Отправить письмо</button>
  
 </form>
+
+<?php 
+endPage();
+?>
