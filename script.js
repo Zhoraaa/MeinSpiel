@@ -42,7 +42,7 @@ function authBlock() {
         '<div id="switchToSU" onclick="SUSISwitcher(\'signUp\', this.id)" class="pointer ctrl-u">Регистрация</div>' +
       '</form>' +
 
-      '<form action="../user/signUpDB.php" method="get" id="signUp" class="hide">'
+      '<form action="../user/signUpDB.php" method="get" id="signUp" class="hide">' +
         '<div><input type="text" name="login" placeholder="Логин" class="inner-shadow"></div>' +
         '<div><input type="email" name="email" placeholder="Эл. почта" class="inner-shadow"></div>' +
         '<div><input type="password" name="pass" placeholder="Пароль" class="inner-shadow"></div>' +
