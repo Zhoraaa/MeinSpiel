@@ -263,6 +263,7 @@ input:focus {
   display:flex;
   flex-direction: column;
 }
+
 .content-mail * {
   max-width: 300px;
 }
