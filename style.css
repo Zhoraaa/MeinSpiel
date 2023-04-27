@@ -256,18 +256,23 @@ input:focus {
   outline: 1px #ffffff solid;
 }
 
+.blur {
+  backdrop-filter: blur(30px);
+}
+
 .content-mail {
-  padding: 40px 40px;
+  max-width: 600px;
+  padding: 40px 20px;
   margin: auto;
 
   display:flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .content-mail * {
-  max-width: 300px;
+  max-width: 500px;
+  margin: 10px;
+  padding: 20px;
 }
 
-.blur {
-  backdrop-filter: blur(30px);
-}
