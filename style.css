@@ -15,7 +15,7 @@ h2 {
 
 html {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 
   background: linear-gradient(180deg,
       #2a1940 10vh,
@@ -38,11 +38,11 @@ button,
 
 body {
   margin: auto;
-  padding: 0 10%;
 }
 
 /* Контентная область и содержимое */
 content {
+  width: 80%;
   height: 90%;
   max-height: 90%;
 
@@ -249,4 +249,15 @@ footer .info {
 .white-border,
 input:focus {
   outline: 1px #ffffff solid;
+}
+
+.content-mail {
+  padding: 40px 40px;
+  margin: auto;
+
+  display:flex;
+  flex-direction: column;
+}
+.content-mail * {
+  max-width: 300px;
 }
