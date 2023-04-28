@@ -38,7 +38,7 @@ function authBlock() {
       '<form action="../user/signInDB.php" method="get" id="signIn">' +
         '<div><input type="text" name="login" placeholder="Логин" class="inner-shadow"></div>' +
         '<div><input type="password" name="pass" placeholder="Пароль" class="inner-shadow"></div>' +
-        '<button type="submit">Войти</button>' +
+        '<button type="submit" class="radius white-border">Войти</button>' +
         '<div id="switchToSU" onclick="SUSISwitcher(\'signUp\', this.id)" class="pointer ctrl-u">Регистрация</div>' +
       '</form>' +
 
@@ -47,7 +47,7 @@ function authBlock() {
         '<div><input type="email" name="email" placeholder="Эл. почта" class="inner-shadow"></div>' +
         '<div><input type="password" name="pass" placeholder="Пароль" class="inner-shadow"></div>' +
         '<div><input type="password" name="passRep" placeholder="Повтор пароля" class="inner-shadow"></div>' +
-        '<button type="submit">Регистрация</button>' +
+        '<button type="submit" class="radius white-border">Регистрация</button>' +
         '<div id="switchToSI" onclick="SUSISwitcher(\'signIn\', this.id)" class="pointer ctrl-u">Вход</div>' +
       '</form>';
 

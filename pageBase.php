@@ -35,19 +35,19 @@ $user = mysqli_fetch_assoc($res);
   <content id="mainContent">
 
     <header>
-      <a class="title inner-header" href="/" title="На главную">
+      <a class="title" href="/" title="На главную">
         <img src="../img/logo.svg" class="LOGO">
-        <h1>Mein<br>Spiel</h1>
+        <h1 class="fifaks">Mein<br>Spiel</h1>
       </a>
-      <form class="search inner-header">
+      <form class="search fifaks">
         <input type="text" name="searchQuery" placeholder="Поиск">
         <button><img src="../img/Search.svg" alt="Искать"></button>
       </form>
-      <nav class="inner-header">
+      <nav class="">
         <?php
         if (isset($user)) {
         ?>
-          <h2>
+          <h2 class="fifaks">
             <?= $user['balance'] ?> ₽
           </h2>
         <?php
