@@ -245,6 +245,23 @@ footer .info {
   }
 }
 
+/* Обратная связь */
+.content-mail {
+  max-width: 600px;
+  padding: 40px 20px;
+  margin: auto;
+
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.warning {
+  text-align: center;
+}
+.pad15 {
+  padding: 10px;
+}
+
 
 /* Частые стили */
 .inter {
@@ -276,18 +293,6 @@ footer .info {
   backdrop-filter: blur(30px);
 }
 
-.content-mail {
-  max-width: 600px;
-  padding: 40px 20px;
-  margin: auto;
-
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-}
-.warning {
-  text-align: center;
-}
-.pad15 {
-  padding: 10px;
+.hide {
+  display: none;
 }
