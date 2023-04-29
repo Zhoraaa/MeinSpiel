@@ -26,14 +26,14 @@ else :
         } elseif ($pass != $check['password']) {
             $_SESSION['result'] = "Ошибка, неверный пароль.";
         } elseif ($pass == $check['password']) {
-            setcookie("user", $check['id'], time() + 3600 * 24, "/");
+            setcookie("user", $check['id_user'], time() + 3600 * 24, "/");
             
-            $_SESSION['result'] = "Авторизация завершена. Добро пожаловать, " . $check['name'] . "!";
+            $_SESSION['result'] = "Авторизация завершена. Добро пожаловать, " . $check['name_user'] . "!";
         }
     }
 endif;
 
-header("location: /")
+// header("location: /")
 ?>
 
 <div class="content">
