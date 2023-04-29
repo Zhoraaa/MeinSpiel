@@ -1,0 +1,41 @@
+/* Частые стили */
+.inter {
+  font-family: 'Inter';
+}
+.fifaks,
+#account {
+  font-family: 'Fifaks 1.0 dev1';
+}
+.radius {
+  border-radius: 20px;
+}
+.inner-shadow {
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+.content {
+  padding: 20px;
+}
+.blur {
+  backdrop-filter: blur(30px);
+}
+.white-border,
+#account input:focus {
+  outline: 1px #ffffff solid;
+}
+
+.blur {
+  backdrop-filter: blur(30px);
+}
+
+.hide {
+  display: none;
+}
+
+.warning {
+  text-align: center;
+}
+
+.pad15 {
+  padding: 10px;
+}

@@ -9,14 +9,9 @@ if (!$user || $user['role'] != 1) {
 <div class="inner-shadow pad15">
   <div id="filters">asd</div>
   <div id="catalogue">
-    <div class="product-card inner-shadow"></div>
-    <div class="product-card inner-shadow"></div>
-    <div class="product-card inner-shadow"></div>
-    <div class="product-card inner-shadow"></div>
-    <div class="product-card inner-shadow"></div>
-    <div class="product-card inner-shadow"></div>
-    <div class="product-card inner-shadow"></div>
-    <div class="product-card inner-shadow"></div>
+    <a class="product-card inner-shadow">
+      <img src="../img/plus.svg" alt="Добавить товар">
+    </a>
   </div>
 </div>
 <?php

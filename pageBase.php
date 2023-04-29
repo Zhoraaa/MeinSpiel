@@ -26,6 +26,7 @@ $user = mysqli_fetch_assoc($res);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MeinSpiel</title>
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../often.css">
   <link rel="stylesheet" href="../font/inter.css">
   <link rel="stylesheet" href="../font/pixel-font.css  ">
   <link rel="shortcut icon" href="../img/logo.svg" type="image/x-icon">
