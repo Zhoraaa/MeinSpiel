@@ -266,6 +266,6 @@ footer .info {
 .content-mail ::placeholder {
   color: #ffffff88;
 }
-.a {
-  margin: 10px;
+.content-mail a {
+  width: auto;
 }
