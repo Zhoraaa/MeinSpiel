@@ -27,8 +27,9 @@ $user = mysqli_fetch_assoc($res);
   <title>MeinSpiel</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../often.css">
+  <link rel="stylesheet" href="../catalogues.css">
   <link rel="stylesheet" href="../font/inter.css">
-  <link rel="stylesheet" href="../font/pixel-font.css  ">
+  <link rel="stylesheet" href="../font/pixel-font.css">
   <link rel="shortcut icon" href="../img/logo.svg" type="image/x-icon">
 </head>
 
@@ -38,9 +39,9 @@ $user = mysqli_fetch_assoc($res);
     <header>
       <a class="title" href="/" title="На главную">
         <img src="../img/logo.svg" class="LOGO">
-        <h1 class="fifaks">Mein<br>Spiel</h1>
+        <h1>Mein<br>Spiel</h1>
       </a>
-      <form class="search fifaks">
+      <form class="search">
         <input type="text" name="searchQuery" placeholder="Поиск">
         <button><img src="../img/Search.svg" alt="Искать"></button>
       </form>
@@ -48,7 +49,7 @@ $user = mysqli_fetch_assoc($res);
         <?php
         if (isset($user)) {
         ?>
-          <h2 class="fifaks">
+          <h2>
             <?= $user['balance'] ?> ₽
           </h2>
         <?php
