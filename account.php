@@ -1,11 +1,11 @@
 <?php
 require_once('pageBase.php');
 ?>
-
-<div class="personal-area content-mail">
-<a>Письмо в техподдержку</a>
-<input type="text" name="Theme" placeholder="Тема"  class="inner-shadow radius inter"/> 
-<textarea type="text" name="Message" placeholder="Сообщение"  class="inner-shadow radius input-height inter"></textarea>
-<button type="submit" class="radius inter">Отправить письмо</button>
  
+<div class="personal-area inner-shadow radius">
+    <div>
+        <div><h2>XX XXXp</h2><button class="radius inter fifaks">Пополнить баланс</button></div>
+        <div><div class="inner-shadow radius fifaks pad">user</div><button class="radius inter fifaks">Редактировать</button></div>
+        <div><div class="inner-shadow radius fifaks pad">fdg@gmail.com</div><a href="../user/logOut.php"><button class="radius inter fifaks">Выйти</button></a></div>
+    </div>
 </div>
