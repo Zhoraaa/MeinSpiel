@@ -36,6 +36,9 @@
   text-align: center;
 }
 
+.marg {
+  margin: 5px;
+}
 .pad15 {
-  padding: 10px;
+  padding: 15px;
 }

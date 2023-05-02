@@ -33,7 +33,7 @@ else :
     }
 endif;
 
-// header("location: /")
+header("location: /")
 ?>
 
 <div class="content">
