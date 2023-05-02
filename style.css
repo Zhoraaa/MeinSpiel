@@ -26,6 +26,9 @@ button,
   outline: none;
   cursor: pointer;
 }
+button, input {
+  background-color: #00000000;
+}
 
 body {
   min-height: 100vh;
@@ -47,8 +50,6 @@ content {
   padding: 0 10%;
   display: block;
 }
-
-
 /* Хэдер */
 header {
   padding: 2% 0;
@@ -83,7 +84,6 @@ h1 {
 .search * {
   border: none;
   padding: 0;
-  background-color: #00000000;
 }
 .search input {
   width: calc(var(--typical-height) * 10);
@@ -100,7 +100,6 @@ input::placeholder {
   width: auto;
   display: flex;
   align-items: center;
-
   justify-content: end;
 }
 .search button img {
@@ -145,7 +144,6 @@ footer .info {
   height: 70%;
   padding: var(--pad-f-info);
   background: #271043;
-
   display: flex;
   justify-content: space-evenly;
   position: relative;
@@ -176,9 +174,7 @@ footer .info {
 #account input {
   width: 80%;
   padding: 5px 10%;
-  background: #00000000;
 }
-
 #account form div,
 #account form button {
   margin: 15px auto 0 auto;
@@ -187,39 +183,78 @@ footer .info {
 }
 #account form button {
   width: auto;
-  background-color: #00000000;
   padding: 5px 10px;
 }
 /* Форматирование текста */
 .ctrl-u {
   text-decoration: underline;
 }
+/* Админка */
+a.product-card.inner-shadow img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: opacity 0.2s;
+  opacity: 0.6;
+}
+a.product-card.inner-shadow:hover img {
+  opacity: 1;
+}
+/* Обратная связь */
+.content-mail {
+  width: 500px;
+  max-width: 80vw;
+  margin: 50px auto auto auto;
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content-mail * {
+  width: 400px;
+  margin: 10px;
+  padding: 10px;
+  resize: none;
+}
+.content-mail button {
+  width: auto;
+  margin: 10px;
+  border: 2px solid #ffffff;
+  padding: 10px 10px;
+}
+.input-height {
+  height: 200px;
+  display: flex;
+  align-items: flex-start;
+}
+.content-mail ::placeholder {
+  color: #ffffff88;
+}
+.content-mail p {
+  width: auto;
+}
+
+
 /* Каталоги */
 #filters {
   height: 5vh;
-
   display: flex;
   align-items: center;
 }
-
 #catalogue {
   min-height: 55vh;
   width: auto;
   margin: 0 auto;
-
   overflow-y: scroll;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: flex-start;
-
   resize: both;
 }
-
 .product-card {
   --card-wh: 150px;
-
   width: var(--card-wh);
   height: calc(var(--card-wh) / 3 * 4);
   margin: 5px 10px;
@@ -234,54 +269,11 @@ footer .info {
     --card-wh: calc(150px / 2);
   }
 }
-
-/* Обратная связь */
-.content-mail {
-  width: 500px;
-  max-width: 80vw;
-  margin: 50px auto auto auto;
-  padding: 40px 40px;
-
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-}
-.content-mail * {
-  width: 400px;
-  margin: 10px;
-  padding: 10px;
-
-  resize: none;
-}
-
-/* Админка */
-a.product-card.inner-shadow img {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.5);
-  transition: opacity 0.2s;
-  opacity: 0.6;
-}
-a.product-card.inner-shadow:hover img {
-  opacity: 1;
-}
-.content-mail button {
-  width: auto;
-  margin: 10px;
-  border: 2px solid #FFFFFF;
-  padding: 10px 10px;
-
-  background: rgba(0, 0, 0, 0);
-}
-.input-height {
-  height: 200px;
+#productInfo {
   display: flex;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
-.content-mail ::placeholder {
-  color: #ffffff88;
-}
-.content-mail a {
-  width: auto;
+.ptInfo {
+  
 }

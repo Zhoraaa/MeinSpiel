@@ -59,10 +59,10 @@ $user = mysqli_fetch_assoc($res);
           foreach ($nav as $item => $title) {
             if (isset($user)) {
           ?>
-              <a href="<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+              <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
             } elseif ($item != 'account') { ?>
-              <a href="<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+              <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
             } else {
             ?>

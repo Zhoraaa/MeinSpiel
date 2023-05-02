@@ -1,7 +1,9 @@
 <?php
 require_once('pageBase.php');
+
+if ($user['role'] != 1 && !empty($_GET['productID']))
 ?>
-<div class="inner-shadow radius pad15">
+<div id="productInfo" class="inner-shadow radius pad">
   <div>
     <img src="" alt="">
     <div>
@@ -11,12 +13,13 @@ require_once('pageBase.php');
       <div>Активация: </div>
       <div>Цена: </div>
       <div>Цена со скидкой: </div>
+      <button class="pad radius white-border">В КОРЗИНУ</button>
     </div>
   </div>
   <div>
-    <div class="inner-shadow radius pad15 marg" id="desc"></div>
-    <div class="inner-shadow radius pad15 marg" id="sys"></div>
-    <div class="inner-shadow radius pad15 marg" id="requests"></div>
+    <div class="inner-shadow radius pad marg ptInfo" id="desc"></div>
+    <div class="inner-shadow radius pad marg ptInfo" id="sys"></div>
+    <div class="inner-shadow radius pad marg ptInfo" id="requests"></div>
   </div>
 </div>
 <?php
