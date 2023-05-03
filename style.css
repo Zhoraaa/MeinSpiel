@@ -14,7 +14,7 @@ h2 {
 }
 
 html {
-  font-size: 12px;
+  font-size: 14px;
   --five: 5px;
   --typical-height: 25px;
   --typical-fsize: 1rem;
@@ -24,7 +24,7 @@ textarea {
   resize: none;
 }
 
-* ::placeholder {
+* ::placeholder, .half-text {
   color: #ffffff88
 }
 

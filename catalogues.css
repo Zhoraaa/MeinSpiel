@@ -55,7 +55,7 @@ a.product-card.inner-shadow:hover img {
 }
 
 #productInfo * {
-  max-width: 60vw;
+  max-width: 100%;
 }
 #poster {
   margin: 0 auto;
@@ -92,4 +92,21 @@ a.product-card.inner-shadow:hover img {
 #left-info > div > div {
   display: flex;
   justify-content: space-between;
+}
+
+#sys > *{
+  display: flex;
+  justify-content: space-between;
+}
+
+#sys * {
+  line-height: 1.6em;
+}
+
+select {
+  border: 0 1px 0 1px;
+  background-color: #00000000;
+}
+option {
+  background-color: #000000dd;
 }

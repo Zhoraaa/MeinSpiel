@@ -1,4 +1,4 @@
-<?php
+.<?php
 $con = mysqli_connect('localhost', 'root', '', 'mein_spiel');
 session_start();
 $return = $_SESSION['result'] ?? null;
