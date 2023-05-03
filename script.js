@@ -36,17 +36,17 @@ function authBlock() {
       '<a onclick="authBlock()" id="loginBtn" class="logoLink"><img src="../img/account.svg"></a>' +
 
       '<form action="../user/signInDB.php" method="get" id="signIn">' +
-        '<div><input type="text" name="login" placeholder="Логин" class="inner-shadow"></div>' +
-        '<div><input type="password" name="pass" placeholder="Пароль" class="inner-shadow"></div>' +
+        '<div><input type="text" name="login" placeholder="Логин" class="inner-shadow inter"></div>' +
+        '<div><input type="password" name="pass" placeholder="Пароль" class="inner-shadow inter"></div>' +
         '<button type="submit" class="radius white-border">Войти</button>' +
         '<div id="switchToSU" onclick="SUSISwitcher(\'signUp\', this.id)" class="pointer ctrl-u">Регистрация</div>' +
       '</form>' +
 
       '<form action="../user/signUpDB.php" method="get" id="signUp" class="hide">' +
-        '<div><input type="text" name="login" placeholder="Логин" class="inner-shadow"></div>' +
-        '<div><input type="email" name="email" placeholder="Эл. почта" class="inner-shadow"></div>' +
-        '<div><input type="password" name="pass" placeholder="Пароль" class="inner-shadow"></div>' +
-        '<div><input type="password" name="passRep" placeholder="Повтор пароля" class="inner-shadow"></div>' +
+        '<div><input type="text" name="login" placeholder="Логин" class="inner-shadow inter"></div>' +
+        '<div><input type="email" name="email" placeholder="Эл. почта" class="inner-shadow inter"></div>' +
+        '<div><input type="password" name="pass" placeholder="Пароль" class="inner-shadow inter"></div>' +
+        '<div><input type="password" name="passRep" placeholder="Повтор пароля" class="inner-shadow inter"></div>' +
         '<button type="submit" class="radius white-border">Регистрация</button>' +
         '<div id="switchToSI" onclick="SUSISwitcher(\'signIn\', this.id)" class="pointer ctrl-u">Вход</div>' +
       '</form>';

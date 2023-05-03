@@ -1,4 +1,4 @@
-.<?php
+<?php
 $con = mysqli_connect('localhost', 'root', '', 'mein_spiel');
 session_start();
 $return = $_SESSION['result'] ?? null;
@@ -87,7 +87,7 @@ $user = mysqli_fetch_assoc($res);
 
   <footer class="wrapper">
     <img src="../img/mountains.svg">
-    <div class="info">asdsa</div>
+    <div class="info"><?php echo ($_SESSION['result']) ?? "placeholder" ?></div>
     <div class="spacer"></div>
   </footer>
 
@@ -96,6 +96,6 @@ $user = mysqli_fetch_assoc($res);
 </html>
 <script src="../script.js"></script>
 <?php
-        unset($return);
+        unset($_SESSION['result']);
       }
 ?>
