@@ -3,18 +3,11 @@ $con = mysqli_connect('localhost', 'root', '', 'mein_spiel');
 session_start();
 $return = $_SESSION['result'] ?? null;
 
-$nav = [
-  'catalogue' => 'Каталог',
-  'korzina' => 'Корзина',
-  'account' => 'Аккаунт'
-];
-
 $user = ($_COOKIE['user']) ?? null;
 if ($user) {
-$query = "SELECT * FROM `users` WHERE `id_user`='$user'";
-$res = $con->query($query);
-$user = mysqli_fetch_assoc($res);
-
+  $query = "SELECT * FROM `users` WHERE `id`='$user'";
+  $res = $con->query($query);
+  $user = mysqli_fetch_assoc($res);
 }
 ?>
 <!DOCTYPE html>
@@ -57,10 +50,20 @@ $user = mysqli_fetch_assoc($res);
         ?>
         <div>
           <?php
+          $nav = [
+            'catalogue' => 'Каталог',
+            'korzina' => 'Корзина',
+            'account' => 'Аккаунт'
+          ];
+
           foreach ($nav as $item => $title) {
-            if (isset($user)) {
+            if (isset($user) && $item != "account") {
           ?>
               <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+            <?php
+            } elseif (isset($user) && $item == "account") {
+            ?>
+              <a href="../<?= $item ?>" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
             } elseif ($item != 'account') { ?>
               <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>

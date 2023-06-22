@@ -1,7 +1,7 @@
 <?php
 require_once("pageBase.php");
 ?>
-<div class="inner-shadow pad">
+<div class="inner-shadow pad10">
   <div id="filters">asd</div>
   <div id="catalogue">
     <?php if (isset($user) && $user['role'] == 1) { ?>

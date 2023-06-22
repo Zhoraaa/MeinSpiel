@@ -313,8 +313,6 @@ a.product-card.inner-shadow:hover img {
   }
 }
 
-.ptInfo {}
-
 /* Личный кабинет */
 #personal-area {
   width: 700px;
@@ -377,4 +375,11 @@ a.product-card.inner-shadow:hover img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    margin: 0; 
 }
