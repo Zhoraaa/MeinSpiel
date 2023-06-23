@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 22 2023 г., 21:08
+-- Время создания: Июн 24 2023 г., 02:22
 -- Версия сервера: 5.7.39
 -- Версия PHP: 8.1.9
 
@@ -83,6 +83,51 @@ INSERT INTO `developers` (`id`, `name`) VALUES
 (17, 'Massive Entertainment'),
 (18, ' Hello Games'),
 (19, 'Capcom');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `keys`
+--
+
+CREATE TABLE `keys` (
+  `id` int(11) NOT NULL,
+  `key` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `game` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `keys`
+--
+
+INSERT INTO `keys` (`id`, `key`, `game`) VALUES
+(1, 'XWWR7X0XXX9A104B', 1),
+(4, '', 1),
+(5, '', 1),
+(6, '', 1),
+(7, '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `client` int(11) NOT NULL,
+  `game` int(11) NOT NULL,
+  `count` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `orders`
+--
+
+INSERT INTO `orders` (`id`, `client`, `game`, `count`, `status`) VALUES
+(1, 1, 1, 4, 1),
+(2, 1, 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -197,7 +242,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `sale_cost`, `cost`, `image`, `publisher`, `developer`, `shop`, `os`, `processor`, `videocard`, `ram`, `memory`, `release_date`, `ssd`) VALUES
-(1, 'Тетрис', 'Классический тетрис. Оригинальная версия для старых компьютеров.', 184, 184, 'default.png', 1, 1, 1, 1, 3, 1, 1, '0.01', '1970-01-01', 0);
+(1, 'Тетрис', 'Классический тетрис. Оригинальная версия для старых компьютеров.', NULL, 184, '8f2d0c6d2b315e45a71beddbd228c34f.jpg', 7, 11, 1, 1, 9, 1, 5, '0.01', '2000-01-17', 1),
+(2, 'asdsad', 'asdsada', NULL, 111, '52fc9ed91781e33b5d3440a3f822227c.png', 1, 1, 1, 1, 3, 1, 1, '1', '1970-01-01', 0);
 
 -- --------------------------------------------------------
 
@@ -260,12 +306,20 @@ INSERT INTO `ram` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `reviews` (
-  `id_review` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `product` int(11) NOT NULL,
   `author` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `review_text` varchar(4096) COLLATE utf8mb4_unicode_ci NOT NULL
+  `text` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `product`, `author`, `created_at`, `text`) VALUES
+(1, 1, 1, '2023-06-23 14:56:25', 'Заебись вода'),
+(2, 1, 1, '2023-06-23 14:57:47', 'Кринге');
 
 -- --------------------------------------------------------
 
@@ -274,17 +328,36 @@ CREATE TABLE `reviews` (
 --
 
 CREATE TABLE `roles` (
-  `id_role` int(11) NOT NULL,
-  `name_role` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `roles`
 --
 
-INSERT INTO `roles` (`id_role`, `name_role`) VALUES
+INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'Администратор'),
 (2, 'Клиент');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `statuses`
+--
+
+CREATE TABLE `statuses` (
+  `id` int(11) NOT NULL,
+  `name` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `statuses`
+--
+
+INSERT INTO `statuses` (`id`, `name`) VALUES
+(2, 'Завершён'),
+(1, 'Ожидание оплаты');
 
 -- --------------------------------------------------------
 
@@ -307,7 +380,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `balance`, `avatar`, `email`, `role`) VALUES
-(1, 'testAcc', 'qweqwe', 0, 'default.png', 'test@acc', 1);
+(1, 'testAcc', 'qweqwe', 0, 'default.png', 'test@acc', 1),
+(2, 'testAcc12', 'qq', 0, 'default.png', 'arturved07@gmail.com', 2);
 
 -- --------------------------------------------------------
 
@@ -392,6 +466,22 @@ ALTER TABLE `developers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `keys`
+--
+ALTER TABLE `keys`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `game` (`game`);
+
+--
+-- Индексы таблицы `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order` (`client`,`game`),
+  ADD KEY `game` (`game`),
+  ADD KEY `status` (`status`);
+
+--
 -- Индексы таблицы `os`
 --
 ALTER TABLE `os`
@@ -440,7 +530,7 @@ ALTER TABLE `ram`
 -- Индексы таблицы `reviews`
 --
 ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`id_review`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `product` (`product`,`author`),
   ADD KEY `author` (`author`);
 
@@ -448,7 +538,14 @@ ALTER TABLE `reviews`
 -- Индексы таблицы `roles`
 --
 ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id_role`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `statuses`
+--
+ALTER TABLE `statuses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `name` (`name`);
 
 --
 -- Индексы таблицы `users`
@@ -484,7 +581,19 @@ ALTER TABLE `activate_in`
 -- AUTO_INCREMENT для таблицы `developers`
 --
 ALTER TABLE `developers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT для таблицы `keys`
+--
+ALTER TABLE `keys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT для таблицы `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `os`
@@ -526,19 +635,25 @@ ALTER TABLE `ram`
 -- AUTO_INCREMENT для таблицы `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT для таблицы `statuses`
+--
+ALTER TABLE `statuses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `videocard_manufacturers`
@@ -555,6 +670,20 @@ ALTER TABLE `videomemory_vars`
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
+
+--
+-- Ограничения внешнего ключа таблицы `keys`
+--
+ALTER TABLE `keys`
+  ADD CONSTRAINT `keys_ibfk_1` FOREIGN KEY (`game`) REFERENCES `products` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`game`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`client`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`status`) REFERENCES `statuses` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `processor_models`
@@ -585,7 +714,7 @@ ALTER TABLE `reviews`
 -- Ограничения внешнего ключа таблицы `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role`) REFERENCES `roles` (`id_role`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role`) REFERENCES `roles` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `videomemory_vars`

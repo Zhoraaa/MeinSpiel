@@ -161,7 +161,7 @@
         </div>
       </div>
     </div>
-    <div class="inner-shadow radius pad20 marg ptInfo" id="requests">
+    <div class="inner-shadow radius pad20 marg ptInfo" id="reviews">
       <p class="half-text">
         <?php
         include "./functions/connect.php";

@@ -1,3 +1,9 @@
+#reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 #reviewForm {
     display: flex;
     flex-direction: column;
@@ -19,9 +25,9 @@
     justify-content: start;
 }
 .review .left-part{
+    width: 150px;
     border-right: #fff 1px solid;
     box-sizing: border-box;
-    padding: 0 15px;
 }
 .review .mid-part{
     box-sizing: border-box;

@@ -7,7 +7,7 @@ $publisher = $_POST['publisher'];
 $developer = $_POST['developer'];
 $shop = $_POST['shop'];
 $cost = $_POST['cost'];
-$saleCost = (empty($_POST['saleCost'])) ? $_POST['cost'] : $_POST['saleCost'];
+$saleCost = (empty($_POST['saleCost'])) ? "NULL" : "'".$_POST['saleCost']."'";
 $OS = $_POST['OS'];
 $CPU = $_POST['CPU'];
 $RAM = $_POST['RAM'];
@@ -28,14 +28,14 @@ switch (end($check)) {
         if (!file_exists($uploadTo)) {
             mkdir($uploadDir, 0777, true);
         }
-
-        $moveTo = $uploadTo . md5(time()) . "." . end($check);
+        $img = md5(time()) . "." . end($check);
+        $moveTo = $uploadTo . $img;
         move_uploaded_file($_FILES['image']['tmp_name'], $moveTo);
 
         $query = "INSERT INTO `products` 
         (`id`, `name`, `description`, `sale_cost`, `cost`, `image`, `publisher`, `developer`, `shop`, 
         `os`, `processor`, `videocard`, `ram`, `memory`, `release_date`, `ssd`) VALUES 
-        (NULL, '$name', '$description', '$saleCost', '$cost', 'default.svg', '$publisher', '$developer', '$shop', '$OS', '$CPU', '$GPU', '$RAM', '$memory', '$releaseDate', '$SSD')";
+        (NULL, '$name', '$description', $saleCost, '$cost', '$img', '$publisher', '$developer', '$shop', '$OS', '$CPU', '$GPU', '$RAM', '$memory', '$releaseDate', '$SSD')";
         $res = $con->query($query);
         break;
 }

@@ -61,3 +61,15 @@
 .mauto {
   margin: 0 auto;
 }
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.gap10 {
+  gap: 10px;
+}

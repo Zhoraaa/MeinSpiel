@@ -1,10 +1,8 @@
-<form action="setProductDB.php" method="post" enctype="multipart/form-data" id="productInfo" class="inner-shadow radius">
+<form action="admin/setProductDB.php" method="post" enctype="multipart/form-data" id="productInfo" class="inner-shadow radius">
   <div id="left-info">
-    <div id="poster">
-      <img src="../img/account.svg" alt="">
-    </div>
+    <input type="file" name="image" id="">
     <div id="summary-info">
-      <textarea id="titleProduct" class="inner-shadow radius pad20" name="name"></textarea>
+      <textarea id="titleProduct" class="inner-shadow radius pad20" placeholder="Название игры" name="name"></textarea>
       <div><input type="date" class="inner-shadow radius pad20" name="releaseDate"></div>
       <div>
         <span>Издатель: </span>

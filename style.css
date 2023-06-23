@@ -54,7 +54,6 @@ input {
 body {
   min-height: 100vh;
   margin: auto;
-
   background: linear-gradient(180deg,
       #2a1940 10%,
       #401b6f 45%,
@@ -76,7 +75,7 @@ header {
   padding: 2% 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -282,48 +281,9 @@ a.product-card.inner-shadow:hover img {
   width: auto;
 }
 
-
-/* Каталоги */
-#filters {
-  height: 5vh;
-  display: flex;
-  align-items: center;
-}
-
-#catalogue {
-  min-height: 55vh;
-  width: auto;
-  margin: 0 auto;
-  overflow-y: visible;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  resize: both;
-}
-
-.product-card {
-  --card-wh: 150px;
-  width: var(--card-wh);
-  height: calc(var(--card-wh) / 3 * 4);
-  margin: 5px 10px;
-}
-
-@media (max-width: 600px) {
-  .product-card {
-    --card-wh: calc(150px / 1.5);
-  }
-}
-
-@media (max-width: 300px) {
-  .product-card {
-    --card-wh: calc(150px / 2);
-  }
-}
-
 /* Личный кабинет */
 #personal-area {
-  width: 700px;
+  min-width: 700px;
   max-width: 70vw;
   margin: auto;
   padding: 30px;
@@ -339,7 +299,6 @@ a.product-card.inner-shadow:hover img {
 #personal-area button {
   width: auto;
   margin: 10px;
-  padding: 10px 10px;
 }
 
 #personal-area>div>div {
@@ -403,12 +362,10 @@ input::-webkit-inner-spin-button {
   min-height: 55vh;
   width: auto;
   margin: 0 auto;
-  overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: flex-start;
-  resize: both;
 }
 
 .product-card {
@@ -484,10 +441,6 @@ a.product-card:hover img {
 
 .pcard-info h3 {
   font-size: 1.2rem;
-}
-
-.pcard-info p {
-  font-style: italic;
 }
 
 /* Страница товара */
@@ -636,4 +589,18 @@ input[type="file"]::-webkit-file-upload-button {
 
 .mini-input {
   width: 50px;
+}
+
+.sale-percentage {
+  display: block;
+  padding: 0px 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.gradient {
+  width: 2.75rem;
+  background: #fff;
+  color: #2a1940;
+  font-weight: bolder;
 }

@@ -1,14 +1,8 @@
 <?php
 include "./functions/connect.php";
-session_start();
 $return = $_SESSION['result'] ?? null;
 
-$user = ($_COOKIE['user']) ?? null;
-if ($user) {
-  $query = "SELECT * FROM `users` WHERE `id`='$user'";
-  $res = $con->query($query);
-  $user = mysqli_fetch_assoc($res);
-}
+include "./functions/user.php"
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -34,16 +28,12 @@ if ($user) {
         <img src="../img/logo.svg" class="LOGO">
         <h1>Mein<br>Spiel</h1>
       </a>
-      <form class="search">
-        <input type="text" name="searchQuery" placeholder="Поиск">
-        <button><img src="../img/Search.svg" alt="Искать"></button>
-      </form>
       <nav class="">
         <?php
         if (isset($user)) {
         ?>
           <h2>
-            <?= $user['balance'] ?>  ₽
+            <?= $user['balance'] ?> ₽
           </h2>
         <?php
         }
@@ -51,24 +41,22 @@ if ($user) {
         <div>
           <?php
           $nav = [
+            'keySet' => 'Добавить ключи',
             'catalogue' => 'Каталог',
             'cart' => 'Корзина',
             'account' => 'Аккаунт'
           ];
 
           foreach ($nav as $item => $title) {
-            if (isset($user) && $item != "account") {
+            if (isset($user)) {
           ?>
               <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
-            } elseif (isset($user) && $item == "account") {
-            ?>
+            } elseif (!isset($user) && $item != "account") {
+            ?>            
               <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
-            } elseif ($item != 'account') { ?>
-              <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
-            <?php
-            } else {
+            } elseif (!isset($user) && $item == "account") {
             ?>
               <a onclick="authBlock()" id="loginBtn" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
           <?php
@@ -90,7 +78,7 @@ if ($user) {
 
   <footer class="wrapper">
     <img src="../img/mountains.svg">
-    <div class="info"><?php echo ($_SESSION['result']) ?? "placeholder" ?></div>
+    <div class="info"><?php echo (isset($_SESSION['result'])) ? $_SESSION['result'] : null ;?></div>
     <div class="spacer"></div>
   </footer>
 

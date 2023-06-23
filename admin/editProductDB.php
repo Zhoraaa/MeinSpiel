@@ -8,7 +8,7 @@ $publisher = $_POST['publisher'];
 $developer = $_POST['developer'];
 $shop = $_POST['shop'];
 $cost = $_POST['cost'];
-$saleCost = (empty($_POST['saleCost'])) ? $_POST['cost'] : $_POST['saleCost'];
+$saleCost = (empty($_POST['saleCost'])) ? "NULL" : "'".$_POST['saleCost']."'";
 $OS = $_POST['OS'];
 $CPU = $_POST['CPU'];
 $RAM = $_POST['RAM'];
@@ -50,7 +50,7 @@ echo $query = "UPDATE `products` SET
 `name` = '$name', 
 `description` = '$description', 
 `cost` = '$cost', 
-`sale_cost` = '$saleCost', 
+`sale_cost` = $saleCost, 
 $img, 
 `developer` = '$developer', 
 `publisher` = '$publisher', 

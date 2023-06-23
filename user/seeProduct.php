@@ -9,14 +9,22 @@
       <div> <span>Разработчик: </span> <span class="ctrl-r"><?= $product['developer'] ?></span> </div>
       <div> <span>Активация: </span> <span class="ctrl-r"><?= $product['shop'] ?></span> </div>
       <div> <span>Дата релиза: </span> <span><?php echo date("d.m.Y", strtotime($product['release_date'])); ?></span> </div>
-      <div> <span>Цена: </span> <span class="ctrl-r"><?= $product['cost'] ?> ₽</span> </div>
+      <div>
+        <span>Цена: </span>
+        <span class="ctrl-r flex gap10"><?= $product['cost'] ?> ₽
+          <?php if (isset($product['sale_percentage'])) { ?>
+          <span class="sale-percentage gradient">-<?= $product['sale_percentage'] ?>%</span>
+          <?php } ?>
+        </span>
+      </div>
       <?php
       if ($product['sale_cost'] < $product['cost'] && $product['sale_cost'] != null) {
-        ?>
-      <div> <span>Цена со скидкой: </span class="ctrl-r"> <span><?= $product['sale_cost'] ?> ₽</span> </div>
-        <?php
+      ?>
+        <div> <span>Цена со скидкой: </span class="ctrl-r"> <span><?= $product['sale_cost'] ?> ₽</span> </div>
+      <?php
       }
       ?>
+      <div> <span>Количество оставшихся ключей: </span> <span class="ctrl-r"><?= $product['count'] ?></span> </div>
     </div>
     <div id="btns">
       <?php
@@ -26,7 +34,7 @@
       <?php
       }
       ?>
-      <a href="/functions/addToCart.php?id=<?=$_GET['id']?>" class="radius white-border">В КОРЗИНУ</a>
+      <a href="/functions/addToCart.php?id=<?= $_GET['id'] ?>" class="radius white-border">В КОРЗИНУ</a>
       <a href="../catalogue.php" class="pad10 radius white-border">Назад</a>
     </div>
   </div>
