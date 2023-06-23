@@ -16,40 +16,39 @@ if (!$login || mb_strlen($login) < 6 || mb_strlen($login) > 32) {
 } elseif (!$pass || mb_strlen($pass) < 6 || mb_strlen($pass) > 32) {
     $_SESSION['result'] = "Пароли корректный пароль (от 6 до 32 символов, латиница и цифры)";
 } else {
-        // Проверка логина, почты и телефона на уникальность
-        $res = $con->query("SELECT * FROM users WHERE `name`='$login'");
-        $checkLogin = mysqli_fetch_assoc($res);
-        $res = $con->query("SELECT * FROM users WHERE `email`='$email'");
-        $checkEmail = mysqli_fetch_assoc($res);
+    // Проверка логина, почты и телефона на уникальность
+    $res = $con->query("SELECT * FROM users WHERE `name`='$login'");
+    $checkLogin = mysqli_fetch_assoc($res);
+    $res = $con->query("SELECT * FROM users WHERE `email`='$email'");
+    $checkEmail = mysqli_fetch_assoc($res);
 
-        if ($checkLogin) {
-            $_SESSION['result'] = "Логин уже используется";
-        } elseif ($checkEmail) {
-            $_SESSION['result'] = "Почта уже используется";
-        } else {
-            // Добавление пользователя. Всегда есть хотябы один админ.
-            $query = "SELECT * FROM `users` WHERE role = 1";
-            $res = $con->query($query);
+    if ($checkLogin) {
+        $_SESSION['result'] = "Логин уже используется";
+    } elseif ($checkEmail) {
+        $_SESSION['result'] = "Почта уже используется";
+    } else {
+        // Добавление пользователя. Всегда есть хотябы один админ.
+        $query = "SELECT * FROM `users` WHERE role = 1";
+        $res = $con->query($query);
 
-            $role = (!empty($check == mysqli_fetch_all($res))) ? 1 : 2;
+        $role = (!empty($check == mysqli_fetch_all($res))) ? 1 : 2;
 
-            $query = "INSERT INTO `users`
+        $query = "INSERT INTO `users`
             (`id`, `name`, `password`, `balance`, `avatar`, `email`, `role`)
             VALUES
             (NULL, '$login', '$pass', '0', 'default.png', '$email', '$role')";
-            
-            $res = $con->query(($query));
 
-            // Автоматический вход в аккаунт после регистрации
-            $query = "SELECT * FROM `users` WHERE `name`='$login' AND `password`='$pass';";
-            
-            $res = $con->query($query);
-            $account = mysqli_fetch_assoc($res);
+        $res = $con->query(($query));
 
-            setcookie("user", $account['id'], time() + 3600 * 24, "/");
+        // Автоматический вход в аккаунт после регистрации
+        $query = "SELECT * FROM `users` WHERE `name`='$login' AND `password`='$pass';";
 
-            $_SESSION['result'] = "Регистрация завершена. Добро пожаловать, " . $account['name'] . "!";
-        }
+        $res = $con->query($query);
+        $account = mysqli_fetch_assoc($res);
+
+        setcookie("user", $account['id'], time() + 3600 * 24, "/");
+
+        $_SESSION['result'] = "Регистрация завершена. Добро пожаловать, " . $account['name'] . "!";
     }
 }
 // header("location: /");
