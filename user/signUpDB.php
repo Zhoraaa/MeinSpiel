@@ -30,8 +30,8 @@ if (!$login || mb_strlen($login) < 6 || mb_strlen($login) > 32) {
         // Добавление пользователя. Всегда есть хотябы один админ.
         $query = "SELECT * FROM `users` WHERE role = 1";
         $res = $con->query($query);
-
-        $role = (!empty($check == mysqli_fetch_all($res))) ? 1 : 2;
+        $check == $res->fetch_all(MYSQLI_ASSOC);
+        $role = (!empty($check)) ? 1 : 2;
 
         $query = "INSERT INTO `users`
             (`id`, `name`, `password`, `balance`, `avatar`, `email`, `role`)
@@ -41,17 +41,12 @@ if (!$login || mb_strlen($login) < 6 || mb_strlen($login) > 32) {
         $res = $con->query(($query));
 
         // Автоматический вход в аккаунт после регистрации
-        $query = "SELECT * FROM `users` WHERE `name`='$login' AND `password`='$pass';";
-
-        $res = $con->query($query);
-        $account = mysqli_fetch_assoc($res);
-
-        setcookie("user", $account['id'], time() + 3600 * 24, "/");
+        include "signInDB.php";
 
         $_SESSION['result'] = "Регистрация завершена. Добро пожаловать, " . $account['name'] . "!";
     }
 }
-// header("location: /");
+header("location: /");
 ?>
 
 <div class="content">
