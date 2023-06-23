@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'mein_spiel');
+include "./functions/connect.php";
 session_start();
 $return = $_SESSION['result'] ?? null;
 
@@ -43,7 +43,7 @@ if ($user) {
         if (isset($user)) {
         ?>
           <h2>
-            <?= $user['balance'] ?> ₽
+            <?= $user['balance'] ?>  ₽
           </h2>
         <?php
         }
@@ -52,7 +52,7 @@ if ($user) {
           <?php
           $nav = [
             'catalogue' => 'Каталог',
-            'korzina' => 'Корзина',
+            'cart' => 'Корзина',
             'account' => 'Аккаунт'
           ];
 
@@ -63,7 +63,7 @@ if ($user) {
             <?php
             } elseif (isset($user) && $item == "account") {
             ?>
-              <a href="../<?= $item ?>" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+              <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
             } elseif ($item != 'account') { ?>
               <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>

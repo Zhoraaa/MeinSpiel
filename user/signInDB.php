@@ -1,6 +1,6 @@
 <?php
 // Подключение БД и сессии
-require_once("../pageBase.php");
+require_once("../functions/connect.php");
 $_SESSION['result'] = "Не авторизован";
 
 // перезаписываем данные с формы в таблицу для SQL запросов и сверки
@@ -11,7 +11,7 @@ if (!$login) :
     $_SESSION['result'] = "Ошибка, введите логин";
 else :
     // Подключаем таблицу для сверки данных
-    echo $query = "SELECT * FROM users WHERE name_user='$login' OR email='$login'";
+    echo $query = "SELECT * FROM users WHERE name='$login' OR email='$login'";
     $res = $con->query($query);
     $check = mysqli_fetch_assoc($res);
 
@@ -26,9 +26,9 @@ else :
         } elseif ($pass != $check['password']) {
             $_SESSION['result'] = "Ошибка, неверный пароль.";
         } elseif ($pass == $check['password']) {
-            setcookie("user", $check['id_user'], time() + 3600 * 24, "/");
+            setcookie("user", $check['id'], time() + 3600 * 24, "/");
             
-            $_SESSION['result'] = "Авторизация завершена. Добро пожаловать, " . $check['name_user'] . "!";
+            $_SESSION['result'] = "Авторизация завершена. Добро пожаловать, " . $check['name'] . "!";
         }
     }
 endif;

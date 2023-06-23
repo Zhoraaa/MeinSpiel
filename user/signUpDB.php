@@ -1,6 +1,6 @@
 <?php
 // Подключение БД и сессии
-require_once('../pageBase.php');
+require_once("../functions/connect.php");
 $_SESSION['result'] = "Регистрация не была завершена по неизвестной ошибке";
 
 // Запись в переменные для последующего SQL-запроса
@@ -25,7 +25,7 @@ if (!$login) {
     } else {
 
         // Проверка логина, почты и телефона на уникальность
-        $res = $con->query("SELECT * FROM users WHERE `name_user`='$login'");
+        $res = $con->query("SELECT * FROM users WHERE `name`='$login'");
         $checkLogin = mysqli_fetch_assoc($res);
         $res = $con->query("SELECT * FROM users WHERE `email`='$email'");
         $checkEmail = mysqli_fetch_assoc($res);
@@ -42,21 +42,21 @@ if (!$login) {
             $role = (!empty($check == mysqli_fetch_all($res))) ? 1 : 2;
 
             $query = "INSERT INTO `users`
-            (`id_user`, `name_user`, `password`, `balance`, `avatar`, `email`, `role`)
+            (`id`, `name`, `password`, `balance`, `avatar`, `email`, `role`)
             VALUES
             (NULL, '$login', '$pass', '0', 'default.png', '$email', '$role')";
             
             $res = $con->query(($query));
 
             // Автоматический вход в аккаунт после регистрации
-            $query = "SELECT * FROM `users` WHERE `name_user`='$login' AND `password`='$pass';";
+            $query = "SELECT * FROM `users` WHERE `name`='$login' AND `password`='$pass';";
             
             $res = $con->query($query);
             $account = mysqli_fetch_assoc($res);
 
-            setcookie("user", $account['id_user'], time() + 3600 * 24, "/");
+            setcookie("user", $account['id'], time() + 3600 * 24, "/");
 
-            $_SESSION['result'] = "Регистрация завершена. Добро пожаловать, " . $account['name_user'] . "!";
+            $_SESSION['result'] = "Регистрация завершена. Добро пожаловать, " . $account['name'] . "!";
         }
     }
 }

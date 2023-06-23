@@ -2,23 +2,32 @@
 .inter {
   font-family: 'Inter';
 }
+
 .radius {
   border-radius: 20px;
   padding: 0 10px;
 }
+
 .inner-shadow {
   background: rgba(0, 0, 0, 0.2);
   box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.4);
 }
+
 .content {
   padding: 20px;
 }
+
 .blur {
   backdrop-filter: blur(30px);
 }
+
 .white-border,
 #account input:focus {
   outline: 1px #ffffff solid;
+}
+
+.white-border {
+  padding: 10px 20px;
 }
 
 .blur {
@@ -33,12 +42,22 @@
   padding: 10px;
 }
 
+.pad20 {
+  padding: 20px;
+}
+
 .ctrl-e {
   text-align: center;
 }
+
 .ctrl-l {
   text-align: left;
 }
+
 .ctrl-r {
   text-align: right;
+}
+
+.mauto {
+  margin: 0 auto;
 }

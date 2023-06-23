@@ -1,7 +1,7 @@
 <?php
 require_once('../pageBase.php');
 
-$to = $user['name_user'];
+$to = $user['name'];
 $subject = isset($_POST['Theme']) ?? null;
 $message = isset($_POST['Message']) ?? null;
 $headers = "From: ".$user['email']."\r\n";

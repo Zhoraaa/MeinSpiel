@@ -1,11 +1,13 @@
-<form action="setProductDB.php" method="post" enctype="multipart/form-data" id="productInfo" class="inner-shadow radius">
+<form action="admin/editProductDB.php" method="post" enctype="multipart/form-data" id="productInfo" class="inner-shadow radius">
   <div id="left-info">
     <div id="poster">
-      <img src="../img/account.svg" alt="">
+      <img src="../img/products/<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
     </div>
+    <input type="file" name="image" id="">
+    <input type="text" class="hide" name="id" value="<?= $_GET['id'] ?>" />
     <div id="summary-info">
-      <textarea id="titleProduct" class="inner-shadow radius pad20" name="name"></textarea>
-      <div><input type="date" class="inner-shadow radius pad20" name="releaseDate"></div>
+      <textarea id="titleProduct" class="inner-shadow radius pad10" name="name"><?= $product['name'] ?></textarea>
+      <div><input type="date" class="inner-shadow radius pad10" name="releaseDate" value="<?= $product['release_date'] ?>"></div>
       <div>
         <span>Издатель: </span>
         <select name="publisher" id="" class="ctrl-r">
@@ -14,8 +16,9 @@
           $res = $con->query($query);
           $publishers = $res->fetch_all(MYSQLI_ASSOC);
           foreach ($publishers as $publisher) {
+            $selected = ($publisher['name'] == $product['publisher']) ? "selected" : null;
           ?>
-            <option value="<?= $publisher['id'] ?>"><?= $publisher['name'] ?></option>
+            <option value="<?= $publisher['id'] ?>" <?= $selected ?>><?= $publisher['name'] ?></option>
           <?php
           }
           ?>
@@ -29,8 +32,9 @@
           $res = $con->query($query);
           $devs = $res->fetch_all(MYSQLI_ASSOC);
           foreach ($devs as $dev) {
+            $selected = ($dev['name'] == $product['developer']) ? "selected" : null;
           ?>
-            <option value="<?= $dev['id'] ?>"><?= $dev['name'] ?></option>
+            <option value="<?= $dev['id'] ?>" <?= $selected ?>><?= $dev['name'] ?></option>
           <?php
           }
           ?>
@@ -44,8 +48,9 @@
           $res = $con->query($query);
           $shops = $res->fetch_all(MYSQLI_ASSOC);
           foreach ($shops as $shop) {
+            $selected = ($shop['name'] == $product['shop']) ? "selected" : null;
           ?>
-            <option value="<?= $shop['id'] ?>"><?= $shop['name'] ?></option>
+            <option value="<?= $shop['id'] ?>" <?= $selected ?>><?= $shop['name'] ?></option>
           <?php
           }
           ?>
@@ -54,26 +59,26 @@
       <div>
         <span>Цена: </span>
         <div>
-          <input type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="cost" />
+          <input type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="cost" value="<?= $product['cost'] ?>" />
           <span> ₽</span>
         </div>
       </div>
       <div>
         <span>Цена со скидкой: </span>
         <div>
-          <input type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="saleCost" />
+          <input type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="saleCost" value="<?= $product['sale_cost'] ?>" />
           <span> ₽</span>
         </div>
       </div>
     </div>
     <div id="btns">
       <button class="radius white-border">Сохранить</button>
-      <a href="../catalogue.php" class="radius white-border">Отмена</a>
+      <a href="../product.php?id=<?= $id ?>" class="radius white-border">Отмена</a>
     </div>
   </div>
   <div id="right-info">
-    <textarea class="inner-shadow radius pad10 marg ptInfo" id="desc" placeholder="Описание игры" name="description"></textarea>
-    <div class="inner-shadow radius pad10 marg ptInfo" id="sys">
+    <textarea class="inner-shadow radius pad20 marg ptInfo" id="desc" placeholder="Описание игры" name="description"><?= $product['description'] ?></textarea>
+    <div class="inner-shadow radius pad20 marg ptInfo" id="sys">
       <p>Минимальные системные требования:</p>
       <div>
         <span>OС: </span>
@@ -83,8 +88,9 @@
           $res = $con->query($query);
           $OSs = $res->fetch_all(MYSQLI_ASSOC);
           foreach ($OSs as $OS) {
+            $selected = ($OS['name'] == $product['os']) ? "selected" : null;
           ?>
-            <option value="<?= $OS['id'] ?>"><?= $OS['name'] ?></option>
+            <option value="<?= $OS['id'] ?>" <?= $selected ?>><?= $OS['name'] ?></option>
           <?php
           }
           ?>
@@ -98,8 +104,9 @@
           $res = $con->query($query);
           $CPUs = $res->fetch_all(MYSQLI_ASSOC);
           foreach ($CPUs as $CPU) {
+            $selected = ($CPU['name'] == $product['processor']) ? "selected" : null;
           ?>
-            <option value="<?= $CPU['id'] ?>"><?= $CPU['name'] ?></option>
+            <option value="<?= $CPU['id'] ?>" <?= $selected ?>><?= $CPU['name'] ?></option>
           <?php
           }
           ?>
@@ -113,8 +120,9 @@
           $res = $con->query($query);
           $GPUs = $res->fetch_all(MYSQLI_ASSOC);
           foreach ($GPUs as $GPU) {
+            $selected = ($GPU['name'] == $product['videocard']) ? "selected" : null;
           ?>
-            <option value="<?= $GPU['id'] ?>"><?= $GPU['name'] ?></option>
+            <option value="<?= $GPU['id'] ?>" <?= $selected ?>><?= $GPU['name'] ?></option>
           <?php
           }
           ?>
@@ -128,8 +136,9 @@
           $res = $con->query($query);
           $RAMs = $res->fetch_all(MYSQLI_ASSOC);
           foreach ($RAMs as $RAM) {
+            $selected = ($RAM['name'] == $product['ram']) ? "selected" : null;
           ?>
-            <option value="<?= $RAM['id'] ?>"><?= $RAM['name'] ?></option>
+            <option value="<?= $RAM['id'] ?>" <?= $selected ?>><?= $RAM['name'] ?></option>
           <?php
           }
           ?>
@@ -139,15 +148,26 @@
         <span>Место на диске: </span>
         <div>
           <div>
-            <input type="number" name="memory" placeholder="00.0" class="inner-shadow ctrl-r radius pad10 mini-input" min="0" step="any" />
+            <input type="number" name="memory" placeholder="00.0" class="inner-shadow ctrl-r radius pad10 mini-input" min="0" step="any" value="<?= $product['memory'] ?>" />
             <span>ГБ</span>
             <label for="SSD">
-              <input type="checkbox" name="SSD" id="SSD">
+              <?php
+              $checked = ($product['ssd']) ? "checked" : null;
+              ?>
+              <input type="checkbox" name="SSD" id="SSD" <?= $checked ?>>
               <span>Рекомендован SSD.</span>
             </label>
           </div>
         </div>
       </div>
+    </div>
+    <div class="inner-shadow radius pad20 marg ptInfo" id="requests">
+      <p class="half-text">
+        <?php
+        include "./functions/connect.php";
+        include "./functions/getReviews.php";
+        ?>
+      </p>
     </div>
   </div>
 </form>
