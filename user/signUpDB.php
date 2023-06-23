@@ -9,21 +9,13 @@ $email = $_GET['email'];
 $pass = ($_GET['pass'] == $_GET['passRep']) ? $_GET['pass'] : false;
 
 // Защита от дурака, отключившего JS
-if (!$login) {
-    $_SESSION['result'] = "Введите логин (от 6 до 32 символов, латиница и цифры)";
+if (!$login || mb_strlen($login) < 6 || mb_strlen($login) > 32) {
+    $_SESSION['result'] = "Введите корректный логин (от 6 до 32 символов, латиница и цифры)";
 } elseif (!$email) {
     $_SESSION['result'] = "Введите почту";
-} elseif (!$pass) {
-    $_SESSION['result'] = "Пароли не совпадают";
+} elseif (!$pass || mb_strlen($pass) < 6 || mb_strlen($pass) > 32) {
+    $_SESSION['result'] = "Пароли корректный пароль (от 6 до 32 символов, латиница и цифры)";
 } else {
-
-    // Проверка длинны логина, пароля 
-    if (strlen($login) < 6 && strlen($login) > 32) {
-        $_SESSION['result'] = "Некорректный логин (от 6 до 32 символов)";
-    } elseif (strlen($pass) < 6 && strlen($pass) > 32) {
-        $_SESSION['result'] = "Некорректный пароль (от 6 до 32 символов)";
-    } else {
-
         // Проверка логина, почты и телефона на уникальность
         $res = $con->query("SELECT * FROM users WHERE `name`='$login'");
         $checkLogin = mysqli_fetch_assoc($res);
@@ -60,10 +52,9 @@ if (!$login) {
         }
     }
 }
-header("location: /");
+// header("location: /");
 ?>
 
 <div class="content">
     <p><?= $_SESSION['result'] ?></p>
-    <p><?= $query ?></p>
 </div>
