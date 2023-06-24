@@ -52,7 +52,7 @@ include "./functions/user.php"
           ?>
               <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
-            } elseif (!isset($user) && $item != "account") {
+            } elseif (!isset($user) && $item != "account" && $item != "keySet" && $item != "cart") {
             ?>            
               <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php

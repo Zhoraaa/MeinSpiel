@@ -41,10 +41,11 @@ if (isset($_GET['id'])) {
   ON `keys`.`game` = `products`.`id`
   WHERE `keys`.`game` = $id";
   $res = $con->query($query);
-  $getCount = $res->fetch_assoc();
-  $product['count'] = $getCount['COUNT(*)'];
+  $get = $res->fetch_assoc();
+  $product['count'] = $get['COUNT(*)'];
   
   
   if ($product['cost'] > $product['sale_cost'] && $product['sale_cost'] != null) {
     $product['sale_percentage'] = round(100 - ($product['sale_cost'] / $product['cost'] * 100), 0);
   }
+  return $product;

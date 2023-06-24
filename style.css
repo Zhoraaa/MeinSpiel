@@ -590,7 +590,12 @@ input[type="file"]::-webkit-file-upload-button {
 .mini-input {
   width: 50px;
 }
-
+#btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px;
+}
 .sale-percentage {
   display: block;
   padding: 0px 5px;
@@ -604,3 +609,4 @@ input[type="file"]::-webkit-file-upload-button {
   color: #2a1940;
   font-weight: bolder;
 }
+

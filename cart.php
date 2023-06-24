@@ -44,9 +44,14 @@ $orders = $res->fetch_all(MYSQLI_ASSOC);
     <div id="catalogue">
         <?php 
         $totalCost = 0;
+        $costWoutSales = 0;
         foreach ($orders as $order) {
             $minCost = (is_int($order['sale_cost'])) ? $order['sale_cost'] : $order['cost'];
             $totalCost = $totalCost + $minCost * $order['count'];
+
+            $maxCost = $order['cost'];
+            $costWoutSales = $maxCost * $order['count']; 
+
             $costStr = $order['cost'] . " ₽";
             if ($order['cost'] > $order['sale_cost'] && $order['sale_cost'] != null) {
                 $order['sale_percentage'] = round(100 - ($order['sale_cost'] / $order['cost'] * 100), 0);

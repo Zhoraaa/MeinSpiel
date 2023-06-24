@@ -29,6 +29,9 @@
 .white-border {
   padding: 10px 20px;
 }
+a.white-border {
+  display: block;
+}
 
 .blur {
   backdrop-filter: blur(30px);

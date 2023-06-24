@@ -17,7 +17,7 @@ $memory = $_POST['memory'];
 $releaseDate = date("Y-m-d", strtotime($_POST['releaseDate']));
 $SSD = (isset($_POST['SSD'])) ? 1 : 0;
 
-$query = "SELECT `image` FROM `products`";
+$query = "SELECT `image` FROM `products` WHERE `id` = $id";
 $res = $con->query($query);
 $product = $res->fetch_assoc();
 $oldImg = $product['image'];
