@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <div id="btns">
+    <div class="btns">
       <button class="radius white-border">Сохранить</button>
       <a href="../product.php?id=<?= $id ?>" class="radius white-border">Отмена</a>
     </div>

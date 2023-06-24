@@ -42,7 +42,7 @@ $orders = $res->fetch_all(MYSQLI_ASSOC);
 <section class="radius inner-shadow content">
 
     <div id="catalogue">
-        <?php 
+        <?php
         $totalCost = 0;
         $costWoutSales = 0;
         foreach ($orders as $order) {
@@ -50,16 +50,24 @@ $orders = $res->fetch_all(MYSQLI_ASSOC);
             $totalCost = $totalCost + $minCost * $order['count'];
 
             $maxCost = $order['cost'];
-            $costWoutSales = $maxCost * $order['count']; 
+            $costWoutSales = $maxCost * $order['count'];
 
             $costStr = $order['cost'] . " ₽";
             if ($order['cost'] > $order['sale_cost'] && $order['sale_cost'] != null) {
                 $order['sale_percentage'] = round(100 - ($order['sale_cost'] / $order['cost'] * 100), 0);
-                $costStr = $order['sale_cost'] . "₽ <i>(" . $order['cost'] . " ₽) </i>
-        <span class=\"sale-percentage gradient\">-" . $order['sale_percentage'] . "%</span>";
+                $costStr =
+                    $order['sale_cost'] . "₽ <i>(" . $order['cost'] . " ₽) </i>
+                 <span class=\"sale-percentage gradient\">-" .
+                    $order['sale_percentage'] . "%</span>";
             }
 
         ?>
+            <div class=" gap10">
+                <a class="radius white-border pad10">-</a>
+                <?= $order['count'] ?>
+                <a class="radius white-border pad10">+</a>
+            </div>
+            <br>
             <a href="../product.php?id=<?= $order['id'] ?>" class="product-card inner-shadow" title="<?= $order['name'] ?>">
                 <div class="mini-poster">
                     <img src="../img/products/<?= $order['image'] ?>" alt="<?= $order['name'] ?>">
@@ -68,12 +76,13 @@ $orders = $res->fetch_all(MYSQLI_ASSOC);
                     <h3><?= $order['name'] ?></h3>
                     <br>
                     <span><?= $costStr ?></span>
+                    <br>
                 </div>
             </a>
         <?php } ?>
     </div>
     <div id="totalCost">
-        <h1>Итоговая цена: <?=$totalCost?> ₽</h1>
+        <h1>Итоговая цена: <?= $totalCost ?> ₽</h1>
     </div>
 </section>
 <?php

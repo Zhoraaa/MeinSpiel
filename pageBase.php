@@ -22,7 +22,7 @@ include "./functions/user.php"
 
 <body>
   <content id="mainContent">
-
+    <div id="accPlace"></div>
     <header>
       <a class="title" href="/" title="На главную">
         <img src="../img/logo.svg" class="LOGO">
@@ -53,12 +53,16 @@ include "./functions/user.php"
               <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
             } elseif (!isset($user) && $item != "account" && $item != "keySet" && $item != "cart") {
-            ?>            
+            ?>
+              <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+            <?php
+            } elseif (!isset($user) && $item != "account" && $item != "keySet" && $item != "cart") {
+            ?>
               <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
             <?php
             } elseif (!isset($user) && $item == "account") {
             ?>
-              <a onclick="authBlock()" id="loginBtn" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+              <a id="loginBtn" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
           <?php
             }
           }
@@ -78,14 +82,28 @@ include "./functions/user.php"
 
   <footer class="wrapper">
     <img src="../img/mountains.svg">
-    <div class="info"><?php echo (isset($_SESSION['result'])) ? $_SESSION['result'] : null ;?></div>
+    <div class="info"><?php echo (isset($_SESSION['result'])) ? $_SESSION['result'] : null; ?></div>
     <div class="spacer"></div>
   </footer>
 
 </body>
 
 </html>
-<script src="../script.js"></script>
+<script src="/scripts/susi.js"></script>
+<script src="/scripts/ajax.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let formSS = false;
+    document.querySelector("#loginBtn").addEventListener("click", (event) => {
+      formSS = !formSS;
+      if (formSS) {
+        asyncLoad("sources/accounting.html", "accPlace");
+      } else {
+        asyncClear("accPlace");
+      }
+    });
+  });
+</script>
 <?php
         unset($_SESSION['result']);
       }

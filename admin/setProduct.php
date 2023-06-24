@@ -64,7 +64,7 @@
         </div>
       </div>
     </div>
-    <div id="btns">
+    <div class="btns">
       <button class="radius white-border">Сохранить</button>
       <a href="../catalogue.php" class="radius white-border">Отмена</a>
     </div>

@@ -26,7 +26,7 @@
       ?>
       <div> <span>Количество оставшихся ключей: </span> <span class="ctrl-r"><?= $product['count'] ?></span> </div>
     </div>
-    <div id="btns">
+    <div class="btns">
       <?php
       if (isset($_COOKIE['user']) && $user['role'] == 1) {
       ?>
