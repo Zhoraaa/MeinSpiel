@@ -1,3 +1,6 @@
+<?php
+$_SESSION['mayDel'] = $_GET['id'];
+?>
 <form action="admin/editProductDB.php" method="post" enctype="multipart/form-data" id="productInfo" class="inner-shadow radius">
   <div id="left-info">
     <div id="poster">
@@ -71,7 +74,7 @@
         </div>
       </div>
     </div>
-    <div class="btns">
+    <div class="btns wrap">
       <button class="radius white-border">Сохранить</button>
       <a id="delProduct" class="radius white-border">Удалить</a>
       <a href="../product.php?id=<?= $id ?>" class="radius white-border">Отмена</a>

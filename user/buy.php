@@ -14,7 +14,7 @@ function pay($con, $user, $newBalance)
   $_SESSION['result'] = "Оплачено.";
 }
 
-function sendLetter($con, $user, $cost, $mes)
+function sendLetter($con, $user, $cost)
 {
   $to = $user['email'];
   $subject = "";
@@ -42,7 +42,7 @@ function sendLetter($con, $user, $cost, $mes)
   INNER JOIN activate_in ON products.shop = activate_in.id 
   
   WHERE orders.client = " . $user['id'] . " AND orders.status = 1";
-  $paidOrders = getTable($con, $query, $where, $orderBy, $limit);
+  $paidOrders = getTable($query, null, null, null);
 
   foreach ($paidOrders as $paidOrder) {
     $query = "SELECT COUNT(*) 
@@ -64,11 +64,13 @@ function sendLetter($con, $user, $cost, $mes)
     $message .= "
     <div>
       <div>
-        <span> Ключ от игры " . $paidOrder['name'] . " (".$paidOrder['count']."): </span><div class=\"keys\">
+        <span> Ключ от игры " . $paidOrder['name'] . " (" . $paidOrder['count'] . "): </span><div class=\"keys\">
         ";
 
     foreach ($keys as $key) {
       $message .= "<p> " . $key['key'] . " </p>";
+      $query = "DELETE FROM `keys` WHERE `keys`.`key` = '" . $key['key'] . "'";
+      $res = $con->query($query);
     }
 
     $message .= "
@@ -91,12 +93,15 @@ function sendLetter($con, $user, $cost, $mes)
   mail($to, $subject, $message, $headers);
 }
 
-if ($newBalance >= 0) {
-  sendLetter($con, $user, $cost, $message);
+if (!$_GET['cost']) {
+  $_SESSION['result'] = "Корзина пуста!";
+} elseif ($newBalance >= 0) {
+  sendLetter($con, $user, $cost);
   pay($con, $user, $newBalance);
   $_SESSION['result'] = "Заказ оформлен, проверьте свою почту.";
 } else {
   $_SESSION['result'] = "Недостаточно средств. Не хватает " . $newBalance * -1 . " ₽.";
 }
+
 
 header("location: ../cart.php");

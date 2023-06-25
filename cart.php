@@ -62,7 +62,7 @@ $orders = $res->fetch_all(MYSQLI_ASSOC);
         <h2>Итоговая цена: <?= $cart['totalCost'] ?> ₽
             <?php
             if (isset($cart['withoutSales'])) {
-                $salePercentage = round(-1 * (100 - ($cart['withoutSales'] / $cart['totalCost'] * 100)), 1);
+                $salePercentage = round(100 - ($cart['totalCost'] / $cart['withoutSales'] * 100), 1);
             ?>
                 (Скидка <?= $salePercentage ?>%)
             <?php
@@ -70,13 +70,12 @@ $orders = $res->fetch_all(MYSQLI_ASSOC);
         </h2>
         <?php
         if (isset($cart['withoutSales'])) {
-            $salePercentage = round(-1 * (100 - ($cart['withoutSales'] / $cart['totalCost'] * 100)), 1);
         ?>
             <h2 class="translucent-text italic">
                 Цена без скидок: <?= $cart['withoutSales'] ?> ₽
             </h2>
         <?php } ?>
-        <div class="btns">
+        <div class="btns wrap">
             <a href="user/buy.php?cost=<?= $cart['totalCost'] ?>" class="radius white-border">Оплатить</a>
             <a href="user/clearCart.php" class="radius white-border">Очистить корзину</a>
         </div>

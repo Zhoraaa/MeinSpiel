@@ -6,7 +6,7 @@ require("pageBase.php");
     <select name="id" class="ctrl-e pad10 mauto">
         <?php
         require("functions/getTable.php");
-        $products = getTable($con, null, null, null, null);
+        $products = getTable(null, null, null, null);
         foreach ($products as $product) {
             $selected = (isset($_GET['id']) && $_GET['id'] == $product['id']) ? "selected" : "null";
             ?>
@@ -16,7 +16,7 @@ require("pageBase.php");
         ?>
     </select>
     <div class="mauto"><input type="text" name="key" class="inner-shadow pad10 radius ctrl-e" maxlength="16" minlength="16" placeholder="XXXXXXXXXXXXXXXX"></div>
-    <div class="mauto btns">
+    <div class="mauto btns wrap">
         <button class="white-border radius">Добавить</button>
         <a href="/" class="white-border radius">Назад</a>
     </div>

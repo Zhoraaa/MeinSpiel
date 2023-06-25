@@ -2,7 +2,7 @@
 require('pageBase.php');
 require('functions/getTable.php');
 
-$sales = getTable($con, null, "WHERE `sale_cost` IS NOT NULL", "ORDER BY `sale_cost` ASC", "LIMIT 6");
+$sales = getTable(null, "WHERE `sale_cost` IS NOT NULL", "ORDER BY `sale_cost` ASC", "LIMIT 6");
 ?>
 
 <sector id="face" class="radius inner-shadow pad20">
@@ -24,7 +24,7 @@ $sales = getTable($con, null, "WHERE `sale_cost` IS NOT NULL", "ORDER BY `sale_c
     <div class="sector-name">
       <h2>Случайный товар:<br><?= $randProduct['name'] ?></h2>
     </div>
-    <a href="../product?id=<?= $randProduct['id'] ?>" id="bigPoster" title="<?= $randProduct['name'] ?>">
+    <a href="../product.php?id=<?= $randProduct['id'] ?>" id="bigPoster" title="<?= $randProduct['name'] ?>">
       <img src="../img/products/<?= $randProduct['image'] ?>" alt="<?= $randProduct['name'] ?>" class="radius mauto">
     </a>
   </div>
@@ -32,7 +32,7 @@ $sales = getTable($con, null, "WHERE `sale_cost` IS NOT NULL", "ORDER BY `sale_c
     <div class="sector-name">
       <h2>Скидки %</h2>
     </div>
-    <div id="sales" class="inner-shadow pad10 radius mauto">
+    <div id="sales" class="inner-shadow pad10 mauto">
       <?php
       require("./functions/getCatalogue.php");
       getCatalogue($sales);

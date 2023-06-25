@@ -89,3 +89,7 @@ a.white-border {
 .gap10 {
   gap: 10px;
 }
+
+.wrap {
+  flex-wrap: wrap;
+}

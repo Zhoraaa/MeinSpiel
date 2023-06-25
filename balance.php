@@ -2,7 +2,7 @@
 require("pageBase.php");
 ?>
 <form action="/user/updateBalance.php" class="inner-shadow pad20 radius">
-  <div class="btns">
+  <div class="btns wrap">
     <a href="/account.php" class="white-border radius">Отмена</a>
     <a href="/user/updateBalance.php?for=500" class="white-border radius">500 ₽</a>
     <a href="/user/updateBalance.php?for=1000" class="white-border radius">1000 ₽</a>

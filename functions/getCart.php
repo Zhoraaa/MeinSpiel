@@ -7,8 +7,8 @@ function getCart($orders)
   ];
   foreach ($orders as $order) {
     $minCost = ($order['sale_cost']) ?? $order['cost'];
-    $output['totalCost'] = $output['totalCost'] + $minCost;
-    $output['withoutSales'] = $output['withoutSales'] + $order['cost'];
+    $output['totalCost'] = $output['totalCost'] + $minCost * $order['count'];
+    $output['withoutSales'] = $output['withoutSales'] + $order['cost'] * $order['count'];
 
     require("connect.php");
     $id = $order['game'];

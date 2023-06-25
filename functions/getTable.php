@@ -1,6 +1,7 @@
 <?php
-function getTable($con, $query, $where, $orderBy, $limit)
+function getTable($query, $where, $orderBy, $limit)
 {
+  require "connect.php";
   $where = ($where) ?? null;
   $orderBy = ($orderBy) ?? "ORDER BY `name` ASC";
   $limit = ($limit) ?? null;
@@ -34,9 +35,17 @@ function getTable($con, $query, $where, $orderBy, $limit)
   $where
   $orderBy
   $limit";
-  
+
   $res = $con->query($query);
   $products = $res->fetch_all(MYSQLI_ASSOC);
+
+  if (
+    isset($_GET['activate_in']) ||
+    isset($_GET['developers']) ||
+    isset($_GET['publishers'])
+  ) {
+    $_SESSION['result'] = "Товаров по вашему запросу найдено " . count($products) . ".";
+  }
 
   return $products;
 }
