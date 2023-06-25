@@ -60,14 +60,16 @@ $orders = $res->fetch_all(MYSQLI_ASSOC);
     </div>
     <div id="totalCost">
         <h2>Итоговая цена: <?= $cart['totalCost'] ?> ₽
-            <?php if ($cart['withoutSales']) {
+            <?php
+            if (isset($cart['withoutSales'])) {
                 $salePercentage = round(-1 * (100 - ($cart['withoutSales'] / $cart['totalCost'] * 100)), 1);
             ?>
                 (Скидка <?= $salePercentage ?>%)
             <?php
             } ?>
         </h2>
-        <?php if ($cart['withoutSales']) {
+        <?php
+        if (isset($cart['withoutSales'])) {
             $salePercentage = round(-1 * (100 - ($cart['withoutSales'] / $cart['totalCost'] * 100)), 1);
         ?>
             <h2 class="translucent-text italic">

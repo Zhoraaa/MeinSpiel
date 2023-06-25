@@ -10,7 +10,7 @@ require_once("pageBase.php");
       </a>
     <?php }
     require("./functions/getTable.php");
-    $products = getTable($con, null, $where, $orderBy, $limit);
+    $products = getTable($con, null, null, null, null);
     require("./functions/getCatalogue.php");
     getCatalogue($products);
     ?>

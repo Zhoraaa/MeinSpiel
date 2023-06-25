@@ -62,17 +62,17 @@ input {
 body {
   min-height: 100vh;
   margin: auto;
-  background: linear-gradient(
-    180deg,
-    #2a1940 10%,
-    #401b6f 45%,
-    #c7542f 75%,
-    #ffa24d 100%
-  );
+  background: linear-gradient(180deg,
+      #2a1940 10%,
+      #401b6f 45%,
+      #c7542f 75%,
+      #ffa24d 100%);
 }
+
 section {
   margin: 0 0 75px 0;
 }
+
 /* Контентная область и содержимое */
 content {
   min-height: 85vh;
@@ -81,6 +81,7 @@ content {
   padding: 0 10%;
   display: block;
 }
+
 /* Хэдер */
 header {
   display: flex;
@@ -89,36 +90,44 @@ header {
   flex-wrap: wrap;
   padding: 15px 0;
 }
+
 /* Название */
 .title {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
+
 header h1 {
   margin: calc(var(--five) * 2);
   font-size: 1.3rem;
 }
+
 .LOGO {
   height: calc(var(--typical-height) * 2);
 }
+
 /* Балик и навигация */
 nav {
   display: flex;
   align-items: center;
 }
+
 nav h2 {
   font-size: 1.5rem;
 }
+
 nav div {
   margin-left: calc(var(--five)*3);
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
+
 nav div a img {
   height: calc(var(--typical-height)*1.5);
 }
+
 /* Футер */
 footer {
   width: 100vw;
@@ -126,12 +135,14 @@ footer {
   position: fixed;
   bottom: 0px;
 }
+
 footer img {
   height: 30%;
   max-width: 80%;
   margin: 0 auto;
   display: block;
 }
+
 footer .info {
   --pad-f-info: 15px;
   max-width: 100%;
@@ -142,6 +153,7 @@ footer .info {
   display: flex;
   justify-content: space-evenly;
 }
+
 /* Авторизация и связанное */
 #account {
   height: auto;
@@ -153,23 +165,28 @@ footer .info {
   align-items: center;
   backdrop-filter: blur(10px);
 }
+
 #account img {
   width: 80px;
 }
+
 #account input {
   width: 80%;
   padding: 5px 10%;
 }
+
 #account form div,
 #account form button {
   margin: 15px auto 0 auto;
   display: flex;
   justify-content: center;
 }
+
 #account form button {
   width: auto;
   padding: 5px 10px;
 }
+
 /* Главная */
 #face {
   display: flex;
@@ -177,17 +194,21 @@ footer .info {
   justify-content: space-between;
   gap: 15px;
 }
+
 #bigPoster {
   display: block;
   height: 500px;
   overflow: hidden;
 }
-#bigPoster > * {
+
+#bigPoster>* {
   height: 100%;
 }
+
 #products {
   width: 50%;
 }
+
 #sales {
   width: 100%;
   padding: 0 0 100px 0;
@@ -198,10 +219,12 @@ footer .info {
   justify-content: flex-start;
   align-content: flex-start;
 }
+
 .sector-name {
   width: 100%;
   text-align: center;
 }
+
 /* Обратная связь */
 .content-mail {
   width: 500px;
@@ -212,30 +235,36 @@ footer .info {
   flex-direction: column;
   align-items: center;
 }
+
 .content-mail * {
   width: 400px;
   margin: 10px;
   padding: 10px;
   resize: none;
 }
+
 .content-mail button {
   width: auto;
   margin: 10px;
   border: 2px solid #ffffff;
   padding: 10px 10px;
 }
+
 .input-height {
   height: 200px;
   display: flex;
   align-items: flex-start;
 }
+
 * ::placeholder,
 .translucent-text {
   color: #ffffff88;
 }
+
 .content-mail p {
   width: auto;
 }
+
 /* Личный кабинет */
 #personal-area {
   min-width: 700px;
@@ -246,60 +275,72 @@ footer .info {
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
 #personal-area * {
   font-size: 20px;
 }
+
 #personal-area button {
   width: auto;
   margin: 10px;
 }
-#personal-area > div > div {
+
+#personal-area>div>div {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 @media (max-width: 600px) {
-  #personal-area > div > div {
+  #personal-area>div>div {
     margin: 20px 0;
     justify-content: space-evenly;
   }
 }
-#personal-area > div > div > div {
+
+#personal-area>div>div>div {
   min-width: 190px;
 }
+
 #info {
   width: 80%;
 }
-#info > div > h2 {
+
+#info>div>h2 {
   font-size: 1.5em;
   display: block;
   margin: 0 auto;
 }
+
 #avatar {
   width: 100px;
   height: 100px;
   border-radius: 100%;
   background-color: #00000000;
 }
+
 #avatar * {
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   display: none;
   -webkit-appearance: none;
   margin: 0;
 }
+
 /* Каталоги */
 #filters {
   height: 5vh;
   display: flex;
   align-items: center;
 }
+
 #catalogue {
   min-height: 55vh;
   width: auto;
@@ -310,6 +351,7 @@ input::-webkit-inner-spin-button {
   justify-content: flex-start;
   align-content: flex-start;
 }
+
 .product-card {
   --card-wh: 150px;
   width: var(--card-wh);
@@ -319,45 +361,53 @@ input::-webkit-inner-spin-button {
 .product-card * {
   transition: all 0.2S ease-out;
 }
+
 @media (max-width: 600px) {
   .product-card {
     --card-wh: calc(150px / 1.5);
   }
 }
+
 @media (max-width: 300px) {
   .product-card {
     --card-wh: calc(150px / 2);
   }
 }
-a.product-card > img {
+
+a.product-card>img {
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.5);
   opacity: 0.6;
+  transform: translate(-50%, -50%) scale(0.4) rotate(-45deg);
 }
-a.product-card:hover img {
+
+a.product-card:hover>img {
   opacity: 1;
   transform: translate(-50%, -50%) scale(0.6);
 }
-a.product-card > img {
-  opacity: 1;
-}
+
 .mini-poster {
   height: 100%;
   overflow: hidden;
 }
+
 .mini-poster > * {
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.5);
-  height: 200%;
+  transform: translate(-50%, -50%) scale(1);
+  height: 100%;
 }
+
+.mini-poster:hover > * {
+  transform: translate(-50%, -50%) scale(1.075);
+}
+
 .pcard-info {
   position: relative;
-  min-height: 0;
-  height: 0;
+  min-height: 0px;
+  height: 0px;
   width: var(--card-wh);
   box-sizing: border-box;
   padding: 0px 10px;
@@ -366,14 +416,18 @@ a.product-card > img {
   backdrop-filter: blur(0px);
   z-index: 1;
 }
+
 .product-card:hover .pcard-info {
-  min-height: 100px;
+  min-height: 1px;
+  height: auto;
   padding: 10px;
   backdrop-filter: blur(10px);
 }
+
 .pcard-info h3 {
   font-size: 1.2rem;
 }
+
 /* Страница товара */
 #productInfo {
   min-height: 400px;
@@ -383,46 +437,57 @@ a.product-card > img {
   word-wrap: break-word;
   padding: 30px 0;
 }
-#left-info > * {
+
+#left-info>* {
   margin: 20px auto;
 }
+
 #poster {
   margin: 0 auto;
   max-height: 350px;
 }
+
 #poster img {
   height: 100%;
   max-width: 350px;
 }
+
 #productInfo h2 {
   line-height: 2.4em;
 }
-#productInfo > div {
+
+#productInfo>div {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 #right-info {
   width: 70%;
   min-width: 500px;
 }
+
 .ptInfo {
   width: 90%;
   min-height: 100px;
   margin: 0 auto;
 }
+
 #left-info {
   width: 30%;
   min-width: 200px;
   margin: 0 auto;
 }
+
 #left-info span {
   line-height: 1.3em;
 }
-#left-info > div > div {
+
+#left-info>div>div {
   display: flex;
   justify-content: space-between;
 }
+
 #titleProduct {
   display: block;
   width: 80%;
@@ -433,26 +498,32 @@ a.product-card > img {
   font-size: 1.4rem;
   resize: vertical;
 }
+
 #sys,
 #summary-info {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 #summary-info {
   width: 100%;
 }
-#summary-info > * {
+
+#summary-info>* {
   margin: 0 auto;
   width: 80%;
 }
-#sys > * {
+
+#sys>* {
   display: flex;
   justify-content: space-between;
 }
+
 #sys * {
   line-height: 1.6em;
 }
+
 select {
   width: 20%;
   min-width: 140px;
@@ -461,25 +532,32 @@ select {
   background-color: #00000000;
   cursor: pointer;
 }
+
 select:focus {
   outline: 2px white solid;
 }
+
 option {
   background-color: #000000dd;
   cursor: pointer;
 }
+
 .cost {
   width: 50px;
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator:hover {
   cursor: pointer;
 }
+
 input[type="file"] {
   font-size: 1rem;
 }
+
 input[type="file"]::-webkit-file-upload-button {
   padding: 10px 20px;
   border-radius: 20px;
@@ -488,29 +566,34 @@ input[type="file"]::-webkit-file-upload-button {
   background-color: #00000000;
   color: #fff;
 }
+
 .mini-input {
   width: 50px;
 }
+
 .btns {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
 }
+
 .sale-percentage {
   display: block;
   padding: 0px 5px;
   box-sizing: border-box;
   border-radius: 10px;
 }
+
 .gradient {
   width: 2.75rem;
   background: #fff;
   color: #2a1940;
   font-weight: bolder;
 }
+
 /* Баланс */
-#formSS > * {
+#formSS>* {
   margin: 20px auto;
   display: flex;
   justify-content: center;

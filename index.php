@@ -2,7 +2,7 @@
 require('pageBase.php');
 require('functions/getTable.php');
 
-$sales = getTable($con, $query, "WHERE `sale_cost` IS NOT NULL", "ORDER BY `sale_cost` ASC", "LIMIT 6");
+$sales = getTable($con, null, "WHERE `sale_cost` IS NOT NULL", "ORDER BY `sale_cost` ASC", "LIMIT 6");
 ?>
 
 <sector id="face" class="radius inner-shadow pad20">

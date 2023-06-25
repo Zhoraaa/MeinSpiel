@@ -1,6 +1,6 @@
 <?php
-require "connect.php";
-require "getProduct.php";
+require "../functions/connect.php";
+require "../functions/getProduct.php";
 $id = $_GET['id'];
 
 $query = "SELECT * FROM `orders` WHERE `client` = '" . $_COOKIE['user'] . "' AND `game` = $id AND `status` = '1'";
