@@ -1,8 +1,8 @@
 <?php
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-  
-    $query = "SELECT 
+  $id = $_GET['id'];
+}
+$query = "SELECT 
   products.id,
   products.name, 
   products.description, 
@@ -30,22 +30,21 @@ if (isset($_GET['id'])) {
   INNER JOIN ram ON products.ram = ram.id
   
   WHERE products.id = $id";
-  
-    $res = $con->query($query);
-    $product = $res->fetch_assoc();
-  }
-  
-  $query = "SELECT COUNT(*) 
+
+$res = $con->query($query);
+$product = $res->fetch_assoc();
+
+$query = "SELECT COUNT(*) 
   FROM `keys` 
   INNER JOIN `products`
   ON `keys`.`game` = `products`.`id`
   WHERE `keys`.`game` = $id";
-  $res = $con->query($query);
-  $get = $res->fetch_assoc();
-  $product['count'] = $get['COUNT(*)'];
-  
-  
-  if ($product['cost'] > $product['sale_cost'] && $product['sale_cost'] != null) {
-    $product['sale_percentage'] = round(100 - ($product['sale_cost'] / $product['cost'] * 100), 0);
-  }
-  return $product;
+$res = $con->query($query);
+$get = $res->fetch_assoc();
+$product['count'] = $get['COUNT(*)'];
+
+
+if ($product['cost'] > $product['sale_cost'] && $product['sale_cost'] != null) {
+  $product['sale_percentage'] = round(100 - ($product['sale_cost'] / $product['cost'] * 100), 0);
+}
+return $product;

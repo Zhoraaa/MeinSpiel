@@ -1,0 +1,33 @@
+<div class="white-border radius pad20 flex column gap10">
+  <h2 class="ctrl-e">Вы уверены?</h2>
+  <div class="btns">
+    <a id="yes" class="white-border radius">Да</a>
+    <button onclick="asyncClear('ajaxPlace')" class="white-border radius">Нет</button>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var yesBtn = document.getElementById('#yes');
+  yesBtn.addEventListener('click', function() {
+    var id = getParameterByName('id');
+    window.location.href = 'delete.php?id=' + id;
+  });
+});
+
+function getParameterByName(name, url) {
+  if (!url) {
+    url = window.location.href;
+  }
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+  if (!results) {
+    return null;
+  }
+  if (!results[2]) {
+    return '';
+  }
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+</script>

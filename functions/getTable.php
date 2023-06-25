@@ -1,6 +1,9 @@
 <?php
-function getTable($query, $con)
+function getTable($con, $query, $where, $orderBy, $limit)
 {
+  $where = ($where) ?? null;
+  $orderBy = ($orderBy) ?? "ORDER BY `name` ASC";
+  $limit = ($limit) ?? null;
   $query = ($query) ?? "SELECT 
   products.id AS id,
   products.name AS name, 
@@ -28,26 +31,12 @@ function getTable($query, $con)
   INNER JOIN videomemory_vars ON products.videocard = videomemory_vars.id 
   INNER JOIN ram ON products.ram = ram.id
   
-  ORDER BY `name` ASC";
-
+  $where
+  $orderBy
+  $limit";
+  
   $res = $con->query($query);
   $products = $res->fetch_all(MYSQLI_ASSOC);
-
-  foreach ($products as $product) {
-    $id = $product['id'];
-    $query = "SELECT COUNT(*) 
-  FROM `keys` 
-  INNER JOIN `products`
-  ON `keys`.`game` = `products`.`id`
-  WHERE `keys`.`game` = $id";
-    $res = $con->query($query);
-    $get = $res->fetch_assoc();
-    $product['count'] = $get['COUNT(*)'];
-
-    if ($product['cost'] > $product['sale_cost'] && $product['sale_cost'] != null) {
-      $product['sale_percentage'] = round(100 - ($product['sale_cost'] / $product['cost'] * 100), 0);
-    }
-  }
 
   return $products;
 }

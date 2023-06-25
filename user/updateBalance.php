@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "../functions/connect.php";
 $sum = $_GET['for'];
 
 $query = "UPDATE `users` SET `balance`= `balance` + '$sum' WHERE id = " . $_COOKIE['user'];

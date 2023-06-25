@@ -1,15 +1,16 @@
 <?php
 require("pageBase.php");
 ?>
-<form action="addKey.php" class="inner-shadow pad20 radius flex column gap10">
+<form action="admin/addKey.php" class="inner-shadow pad20 radius flex column gap10">
     <h1 class="ctrl-e">Добавление ключей</h1>
     <select name="id" class="ctrl-e pad10 mauto">
         <?php
         require("functions/getTable.php");
-        $products = getTable(null, $con);
+        $products = getTable($con, null, null, null, null);
         foreach ($products as $product) {
+            $selected = (isset($_GET['id']) && $_GET['id'] == $product['id']) ? "selected" : "null";
             ?>
-            <option value="<?=$product['id']?>"><?=$product['name']?></option>
+            <option value="<?=$product['id']?>" <?=$selected?>><?=$product['name']?></option>
             <?php
         }
         ?>

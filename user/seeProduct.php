@@ -34,7 +34,7 @@
       <?php
       }
       ?>
-      <a href="/functions/addToCart.php?id=<?= $_GET['id'] ?>" class="radius white-border">В КОРЗИНУ</a>
+      <a href="/user/addToCart.php?id=<?= $_GET['id'] ?>" class="radius white-border">В КОРЗИНУ</a>
       <a href="../catalogue.php" class="pad10 radius white-border">Назад</a>
     </div>
   </div>

@@ -1,8 +1,30 @@
 /* Частые стили */
+/* Текст */
 .inter {
   font-family: 'Inter';
 }
+.ctrl-e {
+  text-align: center;
+}
 
+.ctrl-l {
+  text-align: left;
+}
+
+.ctrl-r {
+  text-align: right;
+}
+.ctrl-u {
+  text-decoration: underline;
+}
+.italic {
+  font-style: italic;
+}
+
+/* Блоки */
+.block {
+  display: block;
+}
 .radius {
   border-radius: 20px;
   padding: 0 10px;
@@ -11,10 +33,6 @@
 .inner-shadow {
   background: rgba(0, 0, 0, 0.2);
   box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.4);
-}
-
-.content {
-  padding: 20px;
 }
 
 .blur {
@@ -33,12 +51,14 @@ a.white-border {
   display: block;
 }
 
-.blur {
-  backdrop-filter: blur(30px);
-}
-
 .hide {
   display: none;
+}
+
+/* Отступы */
+
+.pad0 {
+  padding: 0;
 }
 
 .pad10 {
@@ -49,18 +69,7 @@ a.white-border {
   padding: 20px;
 }
 
-.ctrl-e {
-  text-align: center;
-}
-
-.ctrl-l {
-  text-align: left;
-}
-
-.ctrl-r {
-  text-align: right;
-}
-
+/* Флексы */
 .mauto {
   margin: 0 auto;
 }
@@ -71,6 +80,10 @@ a.white-border {
 
 .column {
   flex-direction: column;
+}
+
+.column-reverse {
+  flex-direction: column-reverse;
 }
 
 .gap10 {

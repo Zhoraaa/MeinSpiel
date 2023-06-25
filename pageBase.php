@@ -2,7 +2,7 @@
 include "./functions/connect.php";
 $return = $_SESSION['result'] ?? null;
 
-include "./functions/user.php"
+include "./user/user.php"
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -22,7 +22,7 @@ include "./functions/user.php"
 
 <body>
   <content id="mainContent">
-    <div id="accPlace"></div>
+    <div id="ajaxPlace" class="radius blur pad0"></div>
     <header>
       <a class="title" href="/" title="На главную">
         <img src="../img/logo.svg" class="LOGO">
@@ -80,10 +80,9 @@ include "./functions/user.php"
     </section>
   </content>
 
-  <footer class="wrapper">
+  <footer>
     <img src="../img/mountains.svg">
     <div class="info"><?php echo (isset($_SESSION['result'])) ? $_SESSION['result'] : null; ?></div>
-    <div class="spacer"></div>
   </footer>
 
 </body>
@@ -97,9 +96,9 @@ include "./functions/user.php"
     document.querySelector("#loginBtn").addEventListener("click", (event) => {
       formSS = !formSS;
       if (formSS) {
-        asyncLoad("sources/accounting.html", "accPlace");
+        asyncLoad("sources/accounting.html", "ajaxPlace");
       } else {
-        asyncClear("accPlace");
+        asyncClear("ajaxPlace");
       }
     });
   });

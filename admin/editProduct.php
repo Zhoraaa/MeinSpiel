@@ -40,7 +40,7 @@
           ?>
         </select>
       </div>
-      <div>
+      <div class="flex space-between">
         <span>Активация: </span>
         <select name="shop" id="" class="ctrl-r">
           <?php
@@ -73,6 +73,7 @@
     </div>
     <div class="btns">
       <button class="radius white-border">Сохранить</button>
+      <a id="delProduct" class="radius white-border">Удалить</a>
       <a href="../product.php?id=<?= $id ?>" class="radius white-border">Отмена</a>
     </div>
   </div>
@@ -171,3 +172,48 @@
     </div>
   </div>
 </form>
+<script src="../scripts/ajax.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let formSS = false;
+    document.querySelector("#delProduct").addEventListener("click", (event) => {
+      formSS = !formSS;
+      if (formSS) {
+        asyncLoad("sources/delSure.html", "ajaxPlace");
+
+        document.addEventListener("DOMContentLoaded", () => {
+          function checkYNBlock() {
+            const YNBlock = document.querySelector("#YN");
+            if (YNBlock) {
+              // Блок найден, выполняем нужные действия
+              clearInterval(checkYNInterval);
+              // Остановить проверку
+              // Ваш код здесь...
+              const ynDiv = document.querySelector("#YN");
+
+              // создание элементов кнопок
+              const yesButton = document.createElement("a");
+              yesButton.className = "white-border radius";
+              yesButton.textContent = "Да";
+
+              const noButton = document.createElement("button");
+              noButton.className = "white-border radius";
+              noButton.textContent = "Нет";
+              noButton.onclick = function() {
+                asyncClear("ajaxPlace");
+              };
+
+              // добавление кнопок в div
+              ynDiv.appendChild(yesButton);
+              ynDiv.appendChild(noButton);
+            }
+          }
+
+          let checkYNInterval = setInterval(checkYNBlock, 100);
+        });
+      } else {
+        asyncClear("ajaxPlace");
+      }
+    });
+  });
+</script>

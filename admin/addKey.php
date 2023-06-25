@@ -9,8 +9,8 @@ if (!$_GET['key']) {
 if ($check['key'] != $_GET['key']) {
     $query = "INSERT INTO `keys`(`id`, `key`, `game`) VALUES (NULL,'" . $_GET['key'] . "','" . $_GET['id'] . "')";
     $res = $con->query($query);
-    $_SESSION['result'] = "Ключ добавлен";
+    $_SESSION['result'] = "Ключ добавлен.";
 } else {
-    $_SESSION['result'] = "Ключ не уникален!";
+    $_SESSION['result'] = "Ключ не уникален для этого товара.";
 }
-header("location: /keySet.php");
+header("location: /keySet.php?id=" . $_GET['id']);

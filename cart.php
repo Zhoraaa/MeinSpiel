@@ -4,7 +4,8 @@ require "functions/connect.php";
 
 $query = "SELECT 
 orders.id, 
-orders.client, 
+orders.client,
+orders.game,
 orders.count, 
 orders.status,
 products.name, 
@@ -38,51 +39,45 @@ WHERE orders.client = " . $_COOKIE['user'] . " AND orders.status = 1";
 $res = $con->query($query);
 $orders = $res->fetch_all(MYSQLI_ASSOC);
 
-?>
-<section class="radius inner-shadow content">
 
+?>
+<section class="radius inner-shadow pad20 flex column-reverse gap10">
     <div id="catalogue">
         <?php
-        $totalCost = 0;
-        $costWoutSales = 0;
-        foreach ($orders as $order) {
-            $minCost = (is_int($order['sale_cost'])) ? $order['sale_cost'] : $order['cost'];
-            $totalCost = $totalCost + $minCost * $order['count'];
+        require("./functions/getCart.php");
+        $cart = getCart($orders);
 
-            $maxCost = $order['cost'];
-            $costWoutSales = $maxCost * $order['count'];
-
-            $costStr = $order['cost'] . " ₽";
-            if ($order['cost'] > $order['sale_cost'] && $order['sale_cost'] != null) {
-                $order['sale_percentage'] = round(100 - ($order['sale_cost'] / $order['cost'] * 100), 0);
-                $costStr =
-                    $order['sale_cost'] . "₽ <i>(" . $order['cost'] . " ₽) </i>
-                 <span class=\"sale-percentage gradient\">-" .
-                    $order['sale_percentage'] . "%</span>";
-            }
-
+        if ($cart['totalCost'] == $cart['withoutSales']) {
+            unset($cart['withoutSales']);
+        }
         ?>
-            <div class=" gap10">
-                <a class="radius white-border pad10">-</a>
-                <?= $order['count'] ?>
-                <a class="radius white-border pad10">+</a>
-            </div>
-            <br>
-            <a href="../product.php?id=<?= $order['id'] ?>" class="product-card inner-shadow" title="<?= $order['name'] ?>">
-                <div class="mini-poster">
-                    <img src="../img/products/<?= $order['image'] ?>" alt="<?= $order['name'] ?>">
-                </div>
-                <div class="pcard-info inner-shadow">
-                    <h3><?= $order['name'] ?></h3>
-                    <br>
-                    <span><?= $costStr ?></span>
-                    <br>
-                </div>
-            </a>
-        <?php } ?>
+    </div>
+    <div class="pcard-info inner-shadow">
+        <h3><?= $order['name'] ?></h3>
+        <br>
+        <span><?= $product['costStr'] ?></span>
+        <br>
     </div>
     <div id="totalCost">
-        <h1>Итоговая цена: <?= $totalCost ?> ₽</h1>
+        <h2>Итоговая цена: <?= $cart['totalCost'] ?> ₽
+            <?php if ($cart['withoutSales']) {
+                $salePercentage = round(-1 * (100 - ($cart['withoutSales'] / $cart['totalCost'] * 100)), 1);
+            ?>
+                (Скидка <?= $salePercentage ?>%)
+            <?php
+            } ?>
+        </h2>
+        <?php if ($cart['withoutSales']) {
+            $salePercentage = round(-1 * (100 - ($cart['withoutSales'] / $cart['totalCost'] * 100)), 1);
+        ?>
+            <h2 class="translucent-text italic">
+                Цена без скидок: <?= $cart['withoutSales'] ?> ₽
+            </h2>
+        <?php } ?>
+        <div class="btns">
+            <a href="user/buy.php?cost=<?= $cart['totalCost'] ?>" class="radius white-border">Оплатить</a>
+            <a href="user/clearCart.php" class="radius white-border">Очистить корзину</a>
+        </div>
     </div>
 </section>
 <?php

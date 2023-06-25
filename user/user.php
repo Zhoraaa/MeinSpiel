@@ -5,4 +5,5 @@ if ($user) {
   $res = $con->query($query);
   $user = mysqli_fetch_assoc($res);
 }
+unset($query);
 return $user;

@@ -1,0 +1,35 @@
+<style>
+  #parent {
+    font-size: 18px;
+    width: 50%;
+    border: #000 1px solid;
+    padding: 5%;
+    box-sizing: border-box;
+  }
+  .mauto {
+    margin: 0 auto;
+  }
+  .list > * {
+    display: flex;
+    flex-direction: column;
+    border-bottom: #000 1px solid;
+    padding: 20px 10px;
+  }
+  .list > * > *{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 10px;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+  .keys {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+<div id="parent" class="mauto">
+  <h2 style="text-align: center; font-weight: bolder">
+    Чек по оплате заказа в магазине MeinSpiel.
+  </h2>
+  <p>Состав заказа:</p>
+  <div class="list mauto">
