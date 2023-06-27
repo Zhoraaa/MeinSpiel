@@ -2,7 +2,11 @@
 include "./functions/connect.php";
 $return = $_SESSION['result'] ?? null;
 
-include "./user/user.php"
+include "./user/user.php";
+
+if (isset($_SESSION['potential_delete'])) {
+    unset($_SESSION['potential_delete']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -40,31 +44,23 @@ include "./user/user.php"
         ?>
         <div>
           <?php
-          $nav = [
-            'keySet' => 'Добавить ключи',
-            'catalogue' => 'Каталог',
-            'cart' => 'Корзина',
-            'account' => 'Аккаунт'
-          ];
-
-          foreach ($nav as $item => $title) {
-            if (isset($user)) {
+          if (isset($user) && $user['role'] == 1) {
           ?>
-              <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
-            <?php
-            } elseif (!isset($user) && $item != "account" && $item != "keySet" && $item != "cart") {
-            ?>
-              <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
-            <?php
-            } elseif (!isset($user) && $item != "account" && $item != "keySet" && $item != "cart") {
-            ?>
-              <a href="../<?= $item ?>.php" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
-            <?php
-            } elseif (!isset($user) && $item == "account") {
-            ?>
-              <a id="loginBtn" class="logoLink"><img src="../img/<?= $item ?>.svg" alt="<?= $title ?>"></a>
+            <a href="../settings.php" class="logoLink"><img src="../img/plus.svg" alt="Инструменты добавления"></a>
           <?php
-            }
+          }
+          ?>
+          <a href="../catalogue.php" class="logoLink"><img src="../img/catalogue.svg" alt="Каталог"></a>
+          <?php
+          if (!isset($user)) {
+          ?>
+            <a id="loginBtn" class="logoLink"><img src="../img/account.svg" alt="Авторизация"></a>
+          <?php
+          } else {
+          ?>
+            <a href="../account.php" class="logoLink"><img src="../img/account.svg" alt="Личный кабинет"></a>
+            <a href="../cart.php" class="logoLink"><img src="../img/cart.svg" alt="Корзина"></a>
+          <?php
           }
           ?>
         </div>

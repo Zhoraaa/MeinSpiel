@@ -3,6 +3,7 @@
 .inter {
   font-family: 'Inter';
 }
+
 .ctrl-e {
   text-align: center;
 }
@@ -14,9 +15,11 @@
 .ctrl-r {
   text-align: right;
 }
+
 .ctrl-u {
   text-decoration: underline;
 }
+
 .italic {
   font-style: italic;
 }
@@ -25,6 +28,7 @@
 .block {
   display: block;
 }
+
 .radius {
   border-radius: 20px;
   padding: 0 10px;
@@ -47,6 +51,7 @@
 .white-border {
   padding: 10px 20px;
 }
+
 a.white-border {
   display: block;
 }
@@ -88,6 +93,10 @@ a.white-border {
 
 .gap10 {
   gap: 10px;
+}
+
+.gap20 {
+  gap: 20px;
 }
 
 .wrap {

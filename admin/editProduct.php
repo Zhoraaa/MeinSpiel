@@ -1,16 +1,16 @@
 <?php
-$_SESSION['mayDel'] = $_GET['id'];
+$_SESSION['potential_delete'] = $_GET['id'];
 ?>
 <form action="admin/editProductDB.php" method="post" enctype="multipart/form-data" id="productInfo" class="inner-shadow radius">
   <div id="left-info">
     <div id="poster">
       <img src="../img/products/<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
     </div>
-    <input type="file" name="image" id="">
-    <input type="text" class="hide" name="id" value="<?= $_GET['id'] ?>" />
+    <input required required type="file" name="image" id="">
+    <input required type="text" class="hide" name="id" value="<?= $_GET['id'] ?>" />
     <div id="summary-info">
-      <textarea id="titleProduct" class="inner-shadow radius pad10" name="name"><?= $product['name'] ?></textarea>
-      <div><input type="date" class="inner-shadow radius pad10" name="releaseDate" value="<?= $product['release_date'] ?>"></div>
+      <textarea required id="titleProduct" class="inner-shadow radius pad10" name="name"><?= $product['name'] ?></textarea>
+      <div><input required type="date" class="inner-shadow radius pad10" name="releaseDate" value="<?= $product['release_date'] ?>"></div>
       <div>
         <span>Издатель: </span>
         <select name="publisher" id="" class="ctrl-r">
@@ -62,14 +62,14 @@ $_SESSION['mayDel'] = $_GET['id'];
       <div>
         <span>Цена: </span>
         <div>
-          <input type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="cost" value="<?= $product['cost'] ?>" />
+          <input required type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="cost" value="<?= $product['cost'] ?>" />
           <span> ₽</span>
         </div>
       </div>
       <div>
         <span>Цена со скидкой: </span>
         <div>
-          <input type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="saleCost" value="<?= $product['sale_cost'] ?>" />
+          <input required type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="saleCost" value="<?= $product['sale_cost'] ?>" />
           <span> ₽</span>
         </div>
       </div>
@@ -81,7 +81,7 @@ $_SESSION['mayDel'] = $_GET['id'];
     </div>
   </div>
   <div id="right-info">
-    <textarea class="inner-shadow radius pad20 marg ptInfo" id="desc" placeholder="Описание игры" name="description"><?= $product['description'] ?></textarea>
+    <textarea required class="inner-shadow radius pad20 marg ptInfo" id="desc" placeholder="Описание игры" name="description"><?= $product['description'] ?></textarea>
     <div class="inner-shadow radius pad20 marg ptInfo" id="sys">
       <p>Минимальные системные требования:</p>
       <div>
@@ -152,7 +152,7 @@ $_SESSION['mayDel'] = $_GET['id'];
         <span>Место на диске: </span>
         <div>
           <div>
-            <input type="number" name="memory" placeholder="00.0" class="inner-shadow ctrl-r radius pad10 mini-input" min="0" step="any" value="<?= $product['memory'] ?>" />
+            <input required type="number" name="memory" placeholder="00.0" class="inner-shadow ctrl-r radius pad10 mini-input" min="0" step="any" value="<?= $product['memory'] ?>" />
             <span>ГБ</span>
             <label for="SSD">
               <?php
@@ -175,7 +175,7 @@ $_SESSION['mayDel'] = $_GET['id'];
     </div>
   </div>
 </form>
-<script src="../scripts/ajax.js"></script>
+<script src="../scripts/ajax.js?v=1.1"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     let formSS = false;

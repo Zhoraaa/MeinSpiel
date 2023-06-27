@@ -1,9 +1,9 @@
 <form action="admin/setProductDB.php" method="post" enctype="multipart/form-data" id="productInfo" class="inner-shadow radius">
   <div id="left-info">
-    <input type="file" name="image" id="">
+    <input required type="file" name="image" id="">
     <div id="summary-info">
-      <textarea id="titleProduct" class="inner-shadow radius pad20" placeholder="Название игры" name="name"></textarea>
-      <div><input type="date" class="inner-shadow radius pad20" name="releaseDate"></div>
+      <textarea required id="titleProduct" class="inner-shadow radius pad20" placeholder="Название игры" name="name"></textarea>
+      <div><input required type="date" class="inner-shadow radius pad20" name="releaseDate"></div>
       <div>
         <span>Издатель: </span>
         <select name="publisher" id="" class="ctrl-r">
@@ -52,14 +52,14 @@
       <div>
         <span>Цена: </span>
         <div>
-          <input type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="cost" />
+          <input required type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="cost" />
           <span> ₽</span>
         </div>
       </div>
       <div>
         <span>Цена со скидкой: </span>
         <div>
-          <input type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="saleCost" />
+          <input required type="number" placeholder="0000" class="inner-shadow radius ctrl-r pad10 mini-input" min="0" class="cost" name="saleCost" />
           <span> ₽</span>
         </div>
       </div>
@@ -70,7 +70,7 @@
     </div>
   </div>
   <div id="right-info">
-    <textarea class="inner-shadow radius pad10 marg ptInfo" id="desc" placeholder="Описание игры" name="description"></textarea>
+    <textarea required class="inner-shadow radius pad10 marg ptInfo" id="desc" placeholder="Описание игры" name="description"></textarea>
     <div class="inner-shadow radius pad10 marg ptInfo" id="sys">
       <p>Минимальные системные требования:</p>
       <div>
@@ -137,7 +137,7 @@
         <span>Место на диске: </span>
         <div>
           <div>
-            <input type="number" name="memory" placeholder="00.0" class="inner-shadow ctrl-r radius pad10 mini-input" min="0" step="any" />
+            <input required type="number" name="memory" placeholder="00.0" class="inner-shadow ctrl-r radius pad10 mini-input" min="0" step="any" />
             <span>ГБ</span>
             <label for="SSD">
               <input type="checkbox" name="SSD" id="SSD">

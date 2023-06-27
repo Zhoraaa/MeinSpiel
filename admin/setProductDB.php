@@ -1,5 +1,7 @@
 <?php
 require("../functions/connect.php");
+require "../functions/user.php";
+require "../admin/security.php";
 
 $name = $_POST['name'];
 $description = $_POST['description'];
@@ -7,7 +9,7 @@ $publisher = $_POST['publisher'];
 $developer = $_POST['developer'];
 $shop = $_POST['shop'];
 $cost = $_POST['cost'];
-$saleCost = (empty($_POST['saleCost'])) ? "NULL" : "'".$_POST['saleCost']."'";
+$saleCost = (empty($_POST['saleCost']) || $_POST['saleCost'] >= $_POST['cost']) ? "NULL" : "'".$_POST['saleCost']."'";
 $OS = $_POST['OS'];
 $CPU = $_POST['CPU'];
 $RAM = $_POST['RAM'];

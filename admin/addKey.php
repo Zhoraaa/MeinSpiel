@@ -1,5 +1,7 @@
 <?php
 require("../functions/connect.php");
+require "../functions/user.php";
+require "../admin/security.php";
 $query = "SELECT * FROM `keys` WHERE `key` = '" . $_GET['key'] . "'";
 $res = $con->query($query);
 $check = $res->fetch_assoc();
@@ -13,4 +15,4 @@ if ($check['key'] != $_GET['key']) {
 } else {
     $_SESSION['result'] = "Ключ не уникален для этого товара.";
 }
-header("location: /keySet.php?id=" . $_GET['id']);
+header("location: /settings.php?key=" . $_GET['id']);

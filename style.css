@@ -357,6 +357,7 @@ input::-webkit-inner-spin-button {
   height: calc(var(--card-wh) / 3 * 4);
   margin: 5px 10px;
 }
+
 .product-card * {
   transition: all 0.2S ease-out;
 }
@@ -391,7 +392,7 @@ a.product-card:hover>img {
   overflow: hidden;
 }
 
-.mini-poster > * {
+.mini-poster>* {
   position: relative;
   top: 50%;
   left: 50%;
@@ -400,7 +401,7 @@ a.product-card:hover>img {
   transition: all 0.5s ease-in-out;
 }
 
-.product-card:hover .mini-poster > * {
+.product-card:hover .mini-poster>* {
   transform: translate(-50%, -50%) scale(2);
 }
 
@@ -593,10 +594,85 @@ input[type="file"]::-webkit-file-upload-button {
   font-weight: bolder;
 }
 
+/* Отзывы */
+#reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#reviewForm textarea {
+  min-width: 70%;
+  min-height: 100px;
+  margin: 0 auto;
+}
+
+#reviewForm button {
+  margin: 0 auto;
+}
+
+.review {
+  display: flex;
+  justify-content: start;
+}
+
+.review .left-part {
+  width: 150px;
+  border-right: #fff 1px solid;
+  box-sizing: border-box;
+}
+
+.review .mid-part {
+  box-sizing: border-box;
+  padding: 5px 15px;
+  width: 50%;
+}
+
 /* Баланс */
 #formSS>* {
   margin: 20px auto;
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+/* Админ панелька */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.list-string,
+#alert {
+  width: 400px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-string a,
+.impact-btn {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.2rem;
+}
+
+.tools {
+  display: flex;
 }

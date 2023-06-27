@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 25 2023 г., 13:49
--- Версия сервера: 8.0.30
--- Версия PHP: 7.2.34
+-- Время создания: Июн 27 2023 г., 12:14
+-- Версия сервера: 5.7.39
+-- Версия PHP: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `activate_in` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -55,8 +55,8 @@ INSERT INTO `activate_in` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `developers` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -82,7 +82,8 @@ INSERT INTO `developers` (`id`, `name`) VALUES
 (16, 'MOB Games'),
 (17, 'Massive Entertainment'),
 (18, ' Hello Games'),
-(19, 'Capcom');
+(19, 'Capcom'),
+(20, 'Maxis');
 
 -- --------------------------------------------------------
 
@@ -91,9 +92,9 @@ INSERT INTO `developers` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `keys` (
-  `id` int NOT NULL,
-  `key` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `game` int NOT NULL
+  `id` int(11) NOT NULL,
+  `key` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `game` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -102,12 +103,9 @@ CREATE TABLE `keys` (
 
 INSERT INTO `keys` (`id`, `key`, `game`) VALUES
 (1, 'C6MCJL6W6C7JF1LX', 5),
-(2, 'UXSF04JQLQE20HYU', 12),
-(3, '73ZNFX1R2V7FCH3S', 12),
 (4, 'XWWR7X0XXX9A104B', 6),
 (5, 'MGKQ0QP7F4FFON3P', 4),
-(6, 'T8SNRHP5QNOZWJ0Z', 4),
-(7, 'DS3X1KOUZCYFYXP9', 3);
+(6, 'T8SNRHP5QNOZWJ0Z', 4);
 
 -- --------------------------------------------------------
 
@@ -116,11 +114,11 @@ INSERT INTO `keys` (`id`, `key`, `game`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `id` int NOT NULL,
-  `client` int NOT NULL,
-  `game` int NOT NULL,
-  `count` int NOT NULL,
-  `status` int NOT NULL DEFAULT '1'
+  `id` int(11) NOT NULL,
+  `client` int(11) NOT NULL,
+  `game` int(11) NOT NULL,
+  `count` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -128,17 +126,14 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `client`, `game`, `count`, `status`) VALUES
-(5, 2, 12, 2, 1),
-(6, 2, 5, 1, 1),
-(7, 2, 12, 1, 1),
 (8, 1, 6, 1, 2),
 (9, 1, 5, 1, 2),
 (10, 1, 12, 2, 2),
 (11, 1, 4, 2, 2),
 (12, 1, 3, 1, 2),
 (13, 1, 12, 2, 2),
-(14, 1, 5, 1, 1),
-(15, 1, 3, 1, 1);
+(17, 1, 3, 1, 2),
+(18, 1, 12, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -147,8 +142,8 @@ INSERT INTO `orders` (`id`, `client`, `game`, `count`, `status`) VALUES
 --
 
 CREATE TABLE `os` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -169,59 +164,39 @@ INSERT INTO `os` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `processor_manufacturers`
---
-
-CREATE TABLE `processor_manufacturers` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `processor_manufacturers`
---
-
-INSERT INTO `processor_manufacturers` (`id`, `name`) VALUES
-(1, 'Intel'),
-(2, 'AMD');
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `processor_models`
 --
 
 CREATE TABLE `processor_models` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `manafacturer` int NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `processor_models`
 --
 
-INSERT INTO `processor_models` (`id`, `name`, `manafacturer`) VALUES
-(3, 'Ryzen 3 1200', 2),
-(4, 'Ryzen 3 2200', 2),
-(5, 'Ryzen 3 3200', 2),
-(6, 'Ryzen 3 5200', 2),
-(7, 'Ryzen 5 1600', 2),
-(8, 'Ryzen 5 2600', 2),
-(9, 'Ryzen 5 3600', 2),
-(10, 'Ryzen 5 5600', 2),
-(11, 'Ryzen 5 7600', 2),
-(12, 'Ryzen 7 1700', 2),
-(13, 'Ryzen 7 2700', 2),
-(14, 'Ryzen 7 3700', 2),
-(15, 'Ryzen 7 5700', 2),
-(16, 'Ryzen 7 7700', 2),
-(17, 'Core i3 4300', 1),
-(18, 'Core i3 6300', 1),
-(19, 'Core i3 7300', 1),
-(20, 'Core i3 8300', 1),
-(21, 'Core i3 9300', 1),
-(22, 'Core i3 10300', 1);
+INSERT INTO `processor_models` (`id`, `name`) VALUES
+(3, 'Ryzen 3 1200'),
+(4, 'Ryzen 3 2200'),
+(5, 'Ryzen 3 3200'),
+(6, 'Ryzen 3 5200'),
+(7, 'Ryzen 5 1600'),
+(8, 'Ryzen 5 2600'),
+(9, 'Ryzen 5 3600'),
+(10, 'Ryzen 5 5600'),
+(11, 'Ryzen 5 7600'),
+(12, 'Ryzen 7 1700'),
+(13, 'Ryzen 7 2700'),
+(14, 'Ryzen 7 3700'),
+(15, 'Ryzen 7 5700'),
+(16, 'Ryzen 7 7700'),
+(17, 'Core i3 4300'),
+(18, 'Core i3 6300'),
+(19, 'Core i3 7300'),
+(20, 'Core i3 8300'),
+(21, 'Core i3 9300'),
+(22, 'Core i3 10300');
 
 -- --------------------------------------------------------
 
@@ -230,20 +205,20 @@ INSERT INTO `processor_models` (`id`, `name`, `manafacturer`) VALUES
 --
 
 CREATE TABLE `products` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(4096) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sale_cost` int DEFAULT NULL,
-  `cost` int NOT NULL,
-  `image` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `publisher` int NOT NULL,
-  `developer` int NOT NULL,
-  `shop` int NOT NULL,
-  `os` int NOT NULL,
-  `processor` int NOT NULL,
-  `videocard` int NOT NULL,
-  `ram` int NOT NULL,
-  `memory` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(4096) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sale_cost` int(11) DEFAULT NULL,
+  `cost` int(11) NOT NULL,
+  `image` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `publisher` int(11) NOT NULL,
+  `developer` int(11) NOT NULL,
+  `shop` int(11) NOT NULL,
+  `os` int(11) NOT NULL,
+  `processor` int(11) NOT NULL,
+  `videocard` int(11) NOT NULL,
+  `ram` int(11) NOT NULL,
+  `memory` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `release_date` date NOT NULL,
   `ssd` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -270,8 +245,8 @@ INSERT INTO `products` (`id`, `name`, `description`, `sale_cost`, `cost`, `image
 --
 
 CREATE TABLE `publishers` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -290,7 +265,8 @@ INSERT INTO `publishers` (`id`, `name`) VALUES
 (9, 'Square Enix'),
 (10, 'Tencent Games'),
 (11, 'Rockstar Games'),
-(12, 'id Software');
+(12, 'id Software'),
+(13, 'Devolver digital');
 
 -- --------------------------------------------------------
 
@@ -299,8 +275,8 @@ INSERT INTO `publishers` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `ram` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -315,7 +291,9 @@ INSERT INTO `ram` (`id`, `name`) VALUES
 (5, '8GB'),
 (6, '10GB'),
 (7, '12GB'),
-(8, '16GB');
+(8, '16GB'),
+(9, '32GB'),
+(10, '64GB');
 
 -- --------------------------------------------------------
 
@@ -324,11 +302,11 @@ INSERT INTO `ram` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `reviews` (
-  `id` int NOT NULL,
-  `product` int NOT NULL,
-  `author` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `product` int(11) NOT NULL,
+  `author` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `text` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `text` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -338,8 +316,8 @@ CREATE TABLE `reviews` (
 --
 
 CREATE TABLE `roles` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -357,8 +335,8 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `statuses` (
-  `id` int NOT NULL,
-  `name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -376,13 +354,13 @@ INSERT INTO `statuses` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
-  `name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'default.png',
-  `balance` int NOT NULL,
-  `avatar` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` int NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT 'default.png',
+  `balance` int(11) NOT NULL,
+  `avatar` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -390,28 +368,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `balance`, `avatar`, `email`, `role`) VALUES
-(1, 'testAcc', 'qweqwe', 0, 'default.png', 'test@acc', 1),
+(1, 'testAcc', 'qweqwe', 953, 'default.png', 'test@acc', 1),
 (2, 'testAcc12', 'qweqwe', 603, 'default.png', 'arturved07@gmail.com', 2);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `videocard_manufacturers`
---
-
-CREATE TABLE `videocard_manufacturers` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `videocard_manufacturers`
---
-
-INSERT INTO `videocard_manufacturers` (`id`, `name`) VALUES
-(1, 'Nvidia'),
-(2, 'AMD'),
-(3, NULL);
 
 -- --------------------------------------------------------
 
@@ -420,44 +378,43 @@ INSERT INTO `videocard_manufacturers` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `videomemory_vars` (
-  `id` int NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `manufacturer` int NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `videomemory_vars`
 --
 
-INSERT INTO `videomemory_vars` (`id`, `name`, `manufacturer`) VALUES
-(1, '<2GB', 3),
-(2, '2GB', 3),
-(3, '4GB', 3),
-(4, 'Gtx 1050 ', 1),
-(5, 'Gtx 1050 Ti', 1),
-(6, 'Gtx 1060', 1),
-(7, 'Gtx 1070', 1),
-(8, 'Gtx 1080', 1),
-(9, 'Gtx 1650', 1),
-(10, 'Gtx 1660', 1),
-(11, 'Rtx 2060', 1),
-(12, 'Rtx 2070', 1),
-(13, 'Rtx 3060', 1),
-(14, 'Gtx 780', 1),
-(15, 'Gtx 750 Ti', 1),
-(16, 'Gtx 960', 1),
-(17, 'Gtx 970', 1),
-(18, 'Gtx 680', 1),
-(19, 'RX 470', 2),
-(20, 'RX 480', 2),
-(21, 'RX 570', 2),
-(22, 'RX 580', 2),
-(23, 'RX 5700 XT', 2),
-(24, 'RX 6700XT', 2),
-(25, 'Radeon Vega 56', 2),
-(26, 'Radeon Vega 64', 2),
-(27, 'RX 6500XT', 2),
-(28, 'Radeon R9 M295X', 2);
+INSERT INTO `videomemory_vars` (`id`, `name`) VALUES
+(1, '<2GB'),
+(2, '2GB'),
+(3, '4GB'),
+(4, 'Gtx 1050 '),
+(5, 'Gtx 1050 Ti'),
+(6, 'Gtx 1060'),
+(7, 'Gtx 1070'),
+(8, 'Gtx 1080'),
+(9, 'Gtx 1650'),
+(10, 'Gtx 1660'),
+(11, 'Rtx 2060'),
+(12, 'Rtx 2070'),
+(13, 'Rtx 3060'),
+(14, 'Gtx 780'),
+(15, 'Gtx 750 Ti'),
+(16, 'Gtx 960'),
+(17, 'Gtx 970'),
+(18, 'Gtx 680'),
+(19, 'RX 470'),
+(20, 'RX 480'),
+(21, 'RX 570'),
+(22, 'RX 580'),
+(23, 'RX 5700 XT'),
+(24, 'RX 6700XT'),
+(25, 'Radeon Vega 56'),
+(26, 'Radeon Vega 64'),
+(27, 'RX 6500XT'),
+(28, 'Radeon R9 M295X');
 
 --
 -- Индексы сохранённых таблиц
@@ -498,17 +455,10 @@ ALTER TABLE `os`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `processor_manufacturers`
---
-ALTER TABLE `processor_manufacturers`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Индексы таблицы `processor_models`
 --
 ALTER TABLE `processor_models`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `manafacturer` (`manafacturer`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `products`
@@ -565,17 +515,10 @@ ALTER TABLE `users`
   ADD KEY `role` (`role`);
 
 --
--- Индексы таблицы `videocard_manufacturers`
---
-ALTER TABLE `videocard_manufacturers`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Индексы таблицы `videomemory_vars`
 --
 ALTER TABLE `videomemory_vars`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `manufacturer` (`manufacturer`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -585,97 +528,85 @@ ALTER TABLE `videomemory_vars`
 -- AUTO_INCREMENT для таблицы `activate_in`
 --
 ALTER TABLE `activate_in`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `developers`
 --
 ALTER TABLE `developers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `keys`
 --
 ALTER TABLE `keys`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT для таблицы `os`
 --
 ALTER TABLE `os`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT для таблицы `processor_manufacturers`
---
-ALTER TABLE `processor_manufacturers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `processor_models`
 --
 ALTER TABLE `processor_models`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `publishers`
 --
 ALTER TABLE `publishers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблицы `ram`
 --
 ALTER TABLE `ram`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `statuses`
 --
 ALTER TABLE `statuses`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT для таблицы `videocard_manufacturers`
---
-ALTER TABLE `videocard_manufacturers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `videomemory_vars`
 --
 ALTER TABLE `videomemory_vars`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -694,12 +625,6 @@ ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`game`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`client`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`status`) REFERENCES `statuses` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `processor_models`
---
-ALTER TABLE `processor_models`
-  ADD CONSTRAINT `processor_models_ibfk_1` FOREIGN KEY (`manafacturer`) REFERENCES `processor_manufacturers` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `products`
@@ -725,12 +650,6 @@ ALTER TABLE `reviews`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role`) REFERENCES `roles` (`id`);
-
---
--- Ограничения внешнего ключа таблицы `videomemory_vars`
---
-ALTER TABLE `videomemory_vars`
-  ADD CONSTRAINT `videomemory_vars_ibfk_1` FOREIGN KEY (`manufacturer`) REFERENCES `videocard_manufacturers` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

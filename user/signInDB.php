@@ -11,7 +11,7 @@ if (!$login) :
     $_SESSION['result'] = "Ошибка, введите логин";
 else :
     // Подключаем таблицу для сверки данных
-    echo $query = "SELECT * FROM users WHERE name='$login' OR email='$login'";
+    echo $query = "SELECT * FROM users WHERE `name`='$login' OR email='$login'";
     $res = $con->query($query);
     $check = mysqli_fetch_assoc($res);
 

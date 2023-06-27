@@ -46,7 +46,7 @@ function getFilters()
             ?>
         </select>
         <button class="radius white-border">Применить</button>
-        <button><a href="" class="radius white-border">Сброс</a></button>
+        <button><a href="?" class="radius white-border">Сброс</a></button>
     </form>
 <?php
 }
