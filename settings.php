@@ -4,6 +4,26 @@ require("functions/getTable.php");
 require "admin/security.php";
 ?>
 <section class="flex column gap10">
+    <form action="admin/addKey.php" class="inner-shadow pad20 radius flex column gap10">
+        <h1 class="ctrl-e">Добавление ключей</h1>
+        <select name="id" class="ctrl-e pad10 mauto">
+            <?php
+            $products = getTable(null, null, null, null);
+            foreach ($products as $product) {
+                $selected = (isset($_GET['key']) && $_GET['key'] == $product['id']) ? "selected" : "null";
+            ?>
+                <option value="<?= $product['id'] ?>" <?= $selected ?>><?= $product['name'] ?></option>
+            <?php
+            }
+            ?>
+        </select>
+        <div class="mauto"><input type="text" name="key" class="inner-shadow pad10 radius ctrl-e" maxlength="16" minlength="16" placeholder="XXXXXXXXXXXXXXXX"></div>
+        <div class="mauto btns wrap">
+            <button class="white-border radius">Добавить</button>
+            <a href="/" class="white-border radius">Назад</a>
+        </div>
+    </form>
+
     <form action="./functions/addData.php" class="radius inner-shadow pad20 flex column">
         <div class="flex mauto gap10" style="align-items: center;">
             <span>
@@ -34,25 +54,6 @@ require "admin/security.php";
         </div>
     </form>
 
-    <form action="admin/addKey.php" class="inner-shadow pad20 radius flex column gap10">
-        <h1 class="ctrl-e">Добавление ключей</h1>
-        <select name="id" class="ctrl-e pad10 mauto">
-            <?php
-            $products = getTable(null, null, null, null);
-            foreach ($products as $product) {
-                $selected = (isset($_GET['key']) && $_GET['key'] == $product['id']) ? "selected" : "null";
-            ?>
-                <option value="<?= $product['id'] ?>" <?= $selected ?>><?= $product['name'] ?></option>
-            <?php
-            }
-            ?>
-        </select>
-        <div class="mauto"><input type="text" name="key" class="inner-shadow pad10 radius ctrl-e" maxlength="16" minlength="16" placeholder="XXXXXXXXXXXXXXXX"></div>
-        <div class="mauto btns wrap">
-            <button class="white-border radius">Добавить</button>
-            <a href="/" class="white-border radius">Назад</a>
-        </div>
-    </form>
     <div class="inner-shadow radius pad20 flex gap10 wrap">
         <?php
         $tables4list = [
@@ -66,7 +67,7 @@ require "admin/security.php";
 
         foreach ($tables4list as $tableName => $listName) {
         ?>
-            <div class="flex column"> 
+            <div class="flex column">
                 <p class="block pad10 ctrl-e"><?= $listName ?></p>
                 <div class="list white-border radius">
                     <?php
