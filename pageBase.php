@@ -58,8 +58,8 @@ if (isset($_SESSION['potential_delete'])) {
           <?php
           } else {
           ?>
-            <a href="../account.php" class="logoLink"><img src="../img/account.svg" alt="Личный кабинет"></a>
             <a href="../cart.php" class="logoLink"><img src="../img/cart.svg" alt="Корзина"></a>
+            <a href="../account.php" class="logoLink"><img src="../img/account.svg" alt="Личный кабинет"></a>
           <?php
           }
           ?>
