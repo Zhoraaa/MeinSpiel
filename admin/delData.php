@@ -1,6 +1,6 @@
 <?php
-require "connect.php";
-require "../functions/user.php";
+require "../functions/connect.php";
+require "../user/user.php";
 require "../admin/security.php";
 
 if (empty($_GET['table'])) {
@@ -28,7 +28,7 @@ if (empty($_GET['table'])) {
         $return = substr($return, 0, -2) . ")";
         $_SESSION['result'] = $return;
     } else {
-        $res = $con->query("DELETE FROM `" . $_GET['table'] . "` WHERE `id`='" . $_GET['id'] . "');");
+        $res = $con->query("DELETE FROM `" . $_GET['table'] . "` WHERE `id`='" . $_GET['id'] . "';");
 
         $_SESSION['result'] = "Удалено.";
     }

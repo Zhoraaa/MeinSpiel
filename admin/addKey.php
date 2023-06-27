@@ -1,6 +1,6 @@
 <?php
 require("../functions/connect.php");
-require "../functions/user.php";
+require "../user/user.php";
 require "../admin/security.php";
 $query = "SELECT * FROM `keys` WHERE `key` = '" . $_GET['key'] . "'";
 $res = $con->query($query);

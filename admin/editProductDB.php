@@ -1,6 +1,6 @@
 <?php
 require("../functions/connect.php");
-require "../functions/user.php";
+require "../user/user.php";
 require "../admin/security.php";
 
 $id = $_POST['id'];
